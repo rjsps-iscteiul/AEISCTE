@@ -25,6 +25,15 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
                 break;
 
+            case R.id.btn_login:
+
+                // Fazer verificações das cenas de login
+
+                startActivity(new Intent(this, MainActivity.class));
+                
+                break;
+
+
 
         }
     }
