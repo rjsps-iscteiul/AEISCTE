@@ -13,6 +13,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_log_in);
 
         findViewById(R.id.link_signup).setOnClickListener(this);
+        findViewById(R.id.btn_login).setOnClickListener(this);
 
     }
 
