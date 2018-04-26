@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">AEISCTE</string>
+    <string name="splash_screen_text">ISCTE - 2018 \n © All Rights Reserved</string>
+
+    <!-- LogIn -->
+    <string name="login_register_text">Não tem conta? Registe-se aqui</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_login_btn">Login</string>
+
+    <!-- SignUp -->
+    <string name="signup_name">Nome</string>
+    <string name="signup_email">Email</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_signup_btn">Criar Conta</string>
+    <string name="signup_login_text">Já tem conta? Faça o LogIn aqui</string>
+
+
+    <string name="signup_username_missing">Deve escolher um nome de utilizador</string>
+    <string name="signup_email_missing">Introduza o seu email</string>
+    <string name="signup_password_missing">Deve escolher uma password</string>
+    <string name="signup_email_wrong">Introduza um endereço de email válido</string>
+    <string name="signup_password_wrong">A Password deve ter no mínimo 6 digitos.</string>
+
+    <string name="signup_register_sucessfull">Utilizador registado com sucesso!</string>
+
+
+    <!--  -->
+
+
+</resources>
