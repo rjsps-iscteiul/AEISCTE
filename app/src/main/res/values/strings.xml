@@ -13,7 +13,7 @@
     <string name="login_pass_missing">Introduza a sua password</string>
 
     <string name="login_signin_error">Ocorreu um erro na autenticação</string>
-    <string name="login_signin_wrong_pass">Password incorreta, tente novamente</string>
+    <string name="login_signin_wrong_pass">Credênciais, tente novamente</string>
 
 
 

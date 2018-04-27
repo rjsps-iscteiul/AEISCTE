@@ -8,6 +8,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class SplashScreen extends AppCompatActivity {
 
     private TextView tv;
@@ -34,7 +37,16 @@ public class SplashScreen extends AppCompatActivity {
         iv.startAnimation(scaleAnim);
 
         final Intent log_in_intent = new Intent(this, LogIn.class);
-        //final Intent main_activity_intent = new Intent(this, News.class);
+        final Intent main_activity_intent = new Intent(this, MainActivity.class);
+
+        // TODO Direct patch to signout ultil we have a sign out button
+        FirebaseAuth.getInstance().signOut();
+
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null){
+            logedIn = true;
+        }
 
         Thread timer = new Thread() {
             public void run() {
@@ -43,9 +55,9 @@ public class SplashScreen extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    // if already have log in go to news page, if not, go to log in page
+                    // if already have log in go to main page, if not, go to log in page
                     if(logedIn){
-                        //startActivity(main_activity_intent);
+                        startActivity(main_activity_intent);
                         finish();
                     } else {
                         startActivity(log_in_intent);

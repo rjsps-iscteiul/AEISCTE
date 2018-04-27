@@ -40,6 +40,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
         mAuth = FirebaseAuth.getInstance();
 
+
     }
 
     private void userLogin(){
@@ -77,7 +78,9 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                     // Go to main activity
                     Intent intent = new Intent(LogIn.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
+                    finish();
 
                 } else {
 

@@ -1,6 +1,7 @@
 package com.example.ruijs.aeiscte;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
@@ -107,6 +109,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             return;
         }
 
+        // Firebase method to authenticate with email and password
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
 
             @Override
@@ -114,10 +117,39 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
                 if(task.isSuccessful()){
 
+                    // Update user name of the person who has just registered
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    String userName = editTextUserName.getText().toString().trim();
+                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                            .setDisplayName(userName)
+                            .build();
+                    user.updateProfile(profileUpdates)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d(LOG_TAG, "User profile updated.");
+                                    }
+                                }
+                            });
+
                     // Sign in success
                     Toast.makeText(getApplicationContext(), getString(R.string.signup_register_sucessfull), Toast.LENGTH_SHORT).show();
                     Log.d(LOG_TAG, "createUserWithEmail:success");
-                    startActivity(new Intent(getApplicationContext(), LogIn.class));
+
+                    // Timer to wait 1 second just to the user see that registered successfully
+                    Thread timer = new Thread() {
+                        public void run() {
+                            try {
+                                sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            } finally {
+                                startActivity(new Intent(getApplicationContext(), LogIn.class));
+                            }
+                        }
+                    };
+                    timer.start();
 
                 } else {
 
