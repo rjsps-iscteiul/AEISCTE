@@ -8,17 +8,21 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     EditText editTextUserName, editTextEmail, editTextPassword;
+
+    final String LOG_TAG = "SignUpActivity";
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -39,10 +43,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Log.d("", "onAuthStateChanged:signed_in:" + user.getUid());
+                    Log.d(LOG_TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
-                    Log.d("", "onAuthStateChanged:signed_out");
+                    Log.d(LOG_TAG, "onAuthStateChanged:signed_out");
                 }
             }
         };
@@ -109,7 +113,22 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if(task.isSuccessful()){
+
+                    // Sign in success
                     Toast.makeText(getApplicationContext(), getString(R.string.signup_register_sucessfull), Toast.LENGTH_SHORT).show();
+                    Log.d(LOG_TAG, "createUserWithEmail:success");
+                    startActivity(new Intent(getApplicationContext(), LogIn.class));
+
+                } else {
+
+                    // If sign in fails, display a message to the user
+                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                        Toast.makeText(getApplicationContext(), getString(R.string.signup_register_collision), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), getString(R.string.signup_register_error), Toast.LENGTH_SHORT).show();
+                        Log.w(LOG_TAG, "createUserWithEmail:failure", task.getException());
+                    }
+
                 }
             }
         });

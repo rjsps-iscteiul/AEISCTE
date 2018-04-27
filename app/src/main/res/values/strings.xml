@@ -8,6 +8,15 @@
     <string name="login_password">Password</string>
     <string name="login_login_btn">Login</string>
 
+    <string name="login_email_wrong">Introduza um endereço de e-mail válido</string>
+    <string name="login_email_missing">Introduza um endereço de e-mail</string>
+    <string name="login_pass_missing">Introduza a sua password</string>
+
+    <string name="login_signin_error">Ocorreu um erro na autenticação</string>
+    <string name="login_signin_wrong_pass">Password incorreta, tente novamente</string>
+
+
+
     <!-- SignUp -->
     <string name="signup_name">Nome</string>
     <string name="signup_email">Email</string>
@@ -15,14 +24,16 @@
     <string name="signup_signup_btn">Criar Conta</string>
     <string name="signup_login_text">Já tem conta? Faça o LogIn aqui</string>
 
-
     <string name="signup_username_missing">Deve escolher um nome de utilizador</string>
     <string name="signup_email_missing">Introduza o seu email</string>
     <string name="signup_password_missing">Deve escolher uma password</string>
     <string name="signup_email_wrong">Introduza um endereço de email válido</string>
-    <string name="signup_password_wrong">A Password deve ter no mínimo 6 digitos.</string>
+    <string name="signup_password_wrong">A Password deve ter no mínimo 6 digitos</string>
 
     <string name="signup_register_sucessfull">Utilizador registado com sucesso!</string>
+    <string name="signup_register_error">Ocorreu um erro no registo</string>
+    <string name="signup_register_collision">Já existe um utilizador com este email!</string>
+
 
 
     <!--  -->
