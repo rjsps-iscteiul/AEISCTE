@@ -146,6 +146,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                                 e.printStackTrace();
                             } finally {
                                 startActivity(new Intent(getApplicationContext(), LogIn.class));
+                                finish();
                             }
                         }
                     };
