@@ -10,15 +10,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashScreen">
+            <!-- FOR TESTING PURPOSES THAT DO NOT NEED LOGIN THIS IS COMMENTED
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".LogIn" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".InfoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LogIn" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".MainActivity"/>
+
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCJB9Yjvtoqf_igtiX9HfUf7tU0WDGJRvE"/>
     </application>
 
 </manifest>

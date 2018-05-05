@@ -37,7 +37,7 @@ public class SplashScreen extends AppCompatActivity {
         iv.startAnimation(scaleAnim);
 
         final Intent log_in_intent = new Intent(this, LogIn.class);
-        final Intent main_activity_intent = new Intent(this, MainActivity.class);
+        final Intent main_activity_intent = new Intent(this, InfoActivity.class);
 
         // TODO Direct patch to signout ultil we have a sign out button
         FirebaseAuth.getInstance().signOut();

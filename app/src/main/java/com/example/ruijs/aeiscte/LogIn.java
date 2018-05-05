@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,7 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LogIn extends AppCompatActivity implements View.OnClickListener {
 
@@ -76,7 +74,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                     Log.d(LOG_TAG, "signInWithEmail:success");
 
                     // Go to main activity
-                    Intent intent = new Intent(LogIn.this, MainActivity.class);
+                    Intent intent = new Intent(LogIn.this, InfoActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);

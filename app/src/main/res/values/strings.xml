@@ -36,7 +36,8 @@
 
 
 
-    <!--  -->
+    <!--  Info -->
+    <string name="text_contacts">TESTING CONTACTS</string>
 
 
 </resources>
