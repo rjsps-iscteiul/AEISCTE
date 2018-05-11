@@ -5,11 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toolbar;
 
 public class MenuActivity extends AppCompatActivity implements
         InfoFragment.OnFragmentInteractionListener,
@@ -24,24 +27,23 @@ public class MenuActivity extends AppCompatActivity implements
     // testing TAG
     private String TAG = "nossa_tag";
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-
         NavigationView navView = (NavigationView) findViewById(R.id.navigationView);
         navView.setNavigationItemSelectedListener(this);
-        }
+    }
 
-protected void showInfo(){
+    protected void showInfo(){
         fragmentManager.beginTransaction().replace(R.id.fragment_container, info_frag).commit();
-        }
+    }
 
-@Override
-public void onFragmentInteraction(Uri uri) {
+    @Override
+    public void onFragmentInteraction(Uri uri) {
         Log.d(TAG,"U triggered fragment interaction");
-        }
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
