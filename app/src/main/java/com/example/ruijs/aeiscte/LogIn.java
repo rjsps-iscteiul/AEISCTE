@@ -74,7 +74,7 @@ public class LogIn extends AppCompatActivity implements View.OnClickListener {
                     Log.d(LOG_TAG, "signInWithEmail:success");
 
                     // Go to main activity
-                    Intent intent = new Intent(LogIn.this, InfoActivity.class);
+                    Intent intent = new Intent(LogIn.this, MenuActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);

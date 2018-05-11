@@ -16,7 +16,6 @@
     <string name="login_signin_wrong_pass">Credênciais, tente novamente</string>
 
 
-
     <!-- SignUp -->
     <string name="signup_name">Nome</string>
     <string name="signup_email">Email</string>
@@ -35,9 +34,17 @@
     <string name="signup_register_collision">Já existe um utilizador com este email!</string>
 
 
-
     <!--  Info -->
     <string name="text_contacts">TESTING CONTACTS</string>
+
+    <!-- Menu -->
+    <string name="menu_feed">Feed</string>
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_sobre">Sobre</string>
+    <string name="menu_contactos">Contactos</string>
+    <string name="menu_logout">LogOut</string>
+    <string name="menu_settings">Definições</string>
+    <string name="menu_eventos">Eventos</string>
 
 
 </resources>
