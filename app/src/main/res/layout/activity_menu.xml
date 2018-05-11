@@ -8,15 +8,23 @@
     tools:context=".MenuActivity">
 
     <android.support.design.widget.NavigationView
-        app:headerLayout="@layout/header"
+        android:id="@+id/navigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
         android:background="@color/color_ae_logo"
-        app:itemTextColor="@color/color_white"
+        app:headerLayout="@layout/header"
         app:itemIconTint="@color/colorPrimary"
-        app:menu="@menu/drawermenu"
-        android:layout_gravity="start">
+        app:itemTextColor="@color/color_white"
+        app:menu="@menu/drawermenu">
 
     </android.support.design.widget.NavigationView>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 
 </android.support.v4.widget.DrawerLayout>
