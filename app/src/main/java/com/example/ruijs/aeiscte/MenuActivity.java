@@ -12,7 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class MenuActivity extends AppCompatActivity implements
-        InfoFragment.OnFragmentInteractionListener
+        InfoFragment.OnFragmentInteractionListener,
+        NavigationView.OnNavigationItemSelectedListener
 {
 
     FragmentManager fragmentManager = getSupportFragmentManager();
@@ -23,36 +24,14 @@ public class MenuActivity extends AppCompatActivity implements
     // testing TAG
     private String TAG = "nossa_tag";
 
-    NavigationView.OnNavigationItemSelectedListener navListener = new NavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Log.d(TAG, "li ->>> " + item.getItemId());
-            switch (item.getItemId()) {
-                case R.id.db:
-                    Log.d(TAG, "CLICASTE NO FEED");
-                    return true;
-                case R.id.event:
-                    Log.d(TAG, "CLICASTE NO EVENTS");
-                    return true;
-                case R.id.settings:
-                    Log.d(TAG, "CLICASTE NO SETTINGS");
-                    showInfo();
-                    return true;
-                case R.id.logout:
-                    Log.d(TAG, "CLICASTE NO LOGOUT");
-                    return true;
-            }
-            return false;
-
-        }
-    };
-
 @Override
 protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+
         NavigationView navView = (NavigationView) findViewById(R.id.navigationView);
-        navView.setNavigationItemSelectedListener(navListener);
+        navView.setNavigationItemSelectedListener(this);
         }
 
 protected void showInfo(){
@@ -63,4 +42,26 @@ protected void showInfo(){
 public void onFragmentInteraction(Uri uri) {
         Log.d(TAG,"U triggered fragment interaction");
         }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Log.d(TAG, "li ->>> " + item.getItemId());
+        switch (item.getItemId()) {
+            case R.id.db:
+                Log.d(TAG, "CLICASTE NO FEED");
+                return true;
+            case R.id.event:
+                Log.d(TAG, "CLICASTE NO EVENTS");
+                return true;
+            case R.id.settings:
+                Log.d(TAG, "CLICASTE NO SETTINGS");
+                showInfo();
+                return true;
+            case R.id.logout:
+                Log.d(TAG, "CLICASTE NO LOGOUT");
+                return true;
         }
+        return false;
+
+    }
+}
