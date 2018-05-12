@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <!--
+    ***********************************
+    ***********************************
+
+    Items that appear int the navigation drawer menu
+
+    ***********************************
+    ***********************************
+    -->
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_feed"
+            android:title="@string/menu_feed"
+            android:icon="@drawable/ic_dashboard_black_24dp"/>
+        <item
+            android:id="@+id/menu_eventos"
+            android:title="@string/menu_eventos"
+            android:icon="@drawable/ic_event_black_24dp"/>
+        <item
+            android:id="@+id/menu_perfil"
+            android:title="@string/menu_perfil"
+            android:icon="@drawable/ic_person_outline_black"/>
+        <item
+            android:id="@+id/menu_contactos"
+            android:title="@string/menu_contactos"
+            android:icon="@drawable/ic_contacts_black"/>
+        <item
+            android:id="@+id/menu_socials"
+            android:title="@string/sidebar_social_networks"
+            android:icon="@drawable/ic_people_outline"/>
+        <item
+            android:id="@+id/menu_sobre"
+            android:title="@string/menu_sobre"
+            android:icon="@drawable/ic_info_outline_black"/>
+    </group>
+
+    <item android:title="@string/sidebar_third_title">
+        <menu>
+            <item
+                android:id="@+id/menu_settings"
+                android:title="@string/menu_settings"
+                android:icon="@drawable/ic_settings_black_24dp"/>
+            <item
+                android:id="@+id/menu_logout"
+                android:title="@string/menu_logout"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"/>
+        </menu>
+    </item>
+
+</menu>
