@@ -37,6 +37,7 @@
     <!-- Contacts -->
     <string name="contacts_telephone">+351 217903018</string>
     <string name="contacts_mobilephone">+351 962887289</string>
+    <string name="contacts_website">www.aeiscte-iul.pt</string>
 
     <!-- Menu -->
     <string name="menu_feed">Feed</string>
