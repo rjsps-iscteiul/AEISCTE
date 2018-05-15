@@ -24,8 +24,8 @@
 
     <ImageView
         android:id="@+id/ivInstagram"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,8 +34,8 @@
 
     <ImageView
         android:id="@+id/ivFacebook"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
         android:layout_marginEnd="56dp"
         android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,8 +44,8 @@
 
     <ImageView
         android:id="@+id/ivYouTube"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="24dp"
@@ -57,8 +57,8 @@
 
     <ImageView
         android:id="@+id/ivTwitter"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="56dp"
         android:layout_marginTop="24dp"
