@@ -6,18 +6,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/socialNetworkFollow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Social"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="60dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp"
+        android:text="@string/follow_networks"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivInstagram"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/socialNetworkFollow"
+        app:srcCompat="@drawable/instagram_logo" />
+
+    <ImageView
+        android:id="@+id/ivFacebook"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/socialNetworkFollow"
+        app:srcCompat="@drawable/facebook_logo" />
+
+    <ImageView
+        android:id="@+id/ivYouTube"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivInstagram"
+        app:layout_constraintVertical_bias="0.222"
+        app:srcCompat="@drawable/youtube_logo" />
+
+    <ImageView
+        android:id="@+id/ivTwitter"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivFacebook"
+        app:layout_constraintVertical_bias="0.222"
+        app:srcCompat="@drawable/twitter_logo" />
 
 </android.support.constraint.ConstraintLayout>
