@@ -18,6 +18,10 @@ android {
     }
 }
 
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -31,6 +35,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-plus:15.0.0'
     implementation 'com.google.android.gms:play-services-maps:15.0.0'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.github.christophesmet:android_maskable_layout:v1.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
