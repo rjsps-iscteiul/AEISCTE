@@ -25,25 +25,25 @@
             android:layout_marginTop="39dp"
             android:src="@drawable/user_default_image" />
 
-        <TextView
+        <EditText
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/user_profile_pic"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="145dp"
             android:editable="false"
             android:text="Nome de Utilizador"
             android:textColor="#fff"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:backgroundTint="@android:color/transparent"/>
 
         <Button
             android:id="@+id/btn_edit_profile"
             android:layout_width="258dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/user_name"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/color_ae_logo"
             android:editable="false"
@@ -72,7 +72,7 @@
                 android:layout_height="36dp"
                 android:src="@drawable/ic_email_blue_24dp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/email_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,7 +80,8 @@
                 android:editable="false"
                 android:paddingLeft="20dp"
                 android:text="user@iscte-iul.pt"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:backgroundTint="@android:color/transparent"/>
         </LinearLayout>
 
         <!--CURSO-->
@@ -96,7 +97,7 @@
                 android:layout_height="36dp"
                 android:src="@drawable/ic_school_blue_24dp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/curso_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,7 +105,8 @@
                 android:editable="false"
                 android:paddingLeft="20dp"
                 android:text="Engenharia de Telecomunicações e Informática"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:backgroundTint="@android:color/transparent"/>
         </LinearLayout>
         <!--DATA DE NASCIMENTO-->
         <LinearLayout
@@ -119,7 +121,7 @@
                 android:layout_height="36dp"
                 android:src="@drawable/ic_cake_blue_24dp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/birth_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,7 +129,8 @@
                 android:editable="false"
                 android:paddingLeft="20dp"
                 android:text="12/5/1996"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:backgroundTint="@android:color/transparent"/>
         </LinearLayout>
         <!--TELEMOVEL-->
         <LinearLayout
@@ -142,7 +145,7 @@
                 android:layout_height="36dp"
                 android:src="@drawable/ic_call_blue_24dp" />
 
-            <TextView
+            <EditText
                 android:id="@+id/phone_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,7 +153,8 @@
                 android:editable="false"
                 android:paddingLeft="20dp"
                 android:text="915879234"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                android:backgroundTint="@android:color/transparent"/>
         </LinearLayout>
     </LinearLayout>
 

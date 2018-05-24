@@ -1,13 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button_teste_about"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="teste botao about"/>
+        android:layout_height="148dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"></LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/developer1_pic"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/developer1_name"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="121dp"
+            android:src="@drawable/user_default_image" />
+        <!--NOME-->
+        <TextView
+            android:id="@+id/developer1_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/developer3_pic"
+            android:layout_alignTop="@+id/developer2_name"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Rui Passinhas"
+            android:textColor="#fff"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+        <!--CARGO-->
+        <TextView
+            android:id="@+id/position1_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/developer1_name"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Developer"
+            android:textColor="#fff"
+            android:textSize="10sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/developer2_pic"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/developer1_pic"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="113dp"
+            android:src="@drawable/jorge_santos" />
+        <!--NOME-->
+        <TextView
+            android:id="@+id/developer2_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/developer2_pic"
+            android:layout_alignTop="@+id/developer3_name"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Jorge Santos"
+            android:textColor="#fff"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+        <!--CARGO-->
+        <TextView
+            android:id="@+id/position2_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/developer1_name"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="128dp"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Developer"
+            android:textColor="#fff"
+            android:textSize="10sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/developer3_pic"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/developer1_pic"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="25dp"
+            android:src="@drawable/rui_passinhas" />
+        <!--NOME-->
+        <TextView
+            android:id="@+id/developer3_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/developer4_pic"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="114dp"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Gonçalo Simões"
+            android:textColor="#fff"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+        <!--CARGO-->
+        <TextView
+            android:id="@+id/position3_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/developer1_name"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="120dp"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Developer"
+            android:textColor="#fff"
+            android:textSize="10sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/developer4_pic"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="43dp"
+            android:src="@drawable/diogo_mendes" />
+        <!--NOME-->
+        <TextView
+            android:id="@+id/developer4_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/developer4_pic"
+            android:layout_below="@+id/developer4_pic"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Diogo Mendes"
+            android:textColor="#fff"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+        <!--CARGO-->
+        <TextView
+            android:id="@+id/postion4_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/developer1_name"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="36dp"
+            android:backgroundTint="@android:color/transparent"
+            android:text="Developer"
+            android:textColor="#fff"
+            android:textSize="10sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="45dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:editable="false"
+            android:paddingLeft="20dp"
+            android:textSize="16dp"
+            android:textColor="@color/color_black"
+            android:text="Esta aplicação foi desenvolvida no âmbito da unidade curricular de Desenvolvimento de Aplicações para Ambientes Móveis.. É destinada a todos os alunos do ISCTE e tem o objetivo de divulgar todas as notícias e/ou eventos destinados aos estudantes"/>
+
+    </LinearLayout>
+
+</LinearLayout>
