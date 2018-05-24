@@ -25,6 +25,13 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    FeedFragment fragFeed = new FeedFragment();
+    EventsFragment fragEvents = new EventsFragment();
+    ProfileFragment fragProfile = new ProfileFragment();
+    ContactsFragment fragContacts = new ContactsFragment();
+    SocialFragment fragSocial = new SocialFragment();
+    AboutFragment fragAbout = new AboutFragment();
+    SettingsFragment fragSettings = new SettingsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,31 +101,31 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.menu_feed) {
 
-            fragment = new FeedFragment();
+            fragment = fragFeed;
 
         } else if (id == R.id.menu_eventos) {
 
-            fragment = new EventsFragment();
+            fragment = fragEvents;
 
         } else if (id == R.id.menu_perfil) {
 
-            fragment = new ProfileFragment();
+            fragment = fragProfile;
 
         } else if (id == R.id.menu_contactos) {
 
-            fragment = new ContactsFragment();
+            fragment = fragContacts;
 
         } else if (id == R.id.menu_socials) {
 
-            fragment = new SocialFragment();
+            fragment = fragSocial;
 
         } else if (id == R.id.menu_sobre) {
 
-            fragment = new AboutFragment();
+            fragment =fragAbout;
 
         } else if (id == R.id.menu_settings) {
 
-            fragment = new SettingsFragment();
+            fragment = fragSettings;
 
         } else if (id == R.id.menu_logout) {
 
