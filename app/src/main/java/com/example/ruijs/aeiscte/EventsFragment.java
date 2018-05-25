@@ -32,6 +32,7 @@ public class EventsFragment extends Fragment{
     FeedAdapter adapter;
 
     ArrayList<Card> listOfCards = new ArrayList<Card>();
+    FragmentManager fragmentManager;
 
 
     @Nullable
@@ -48,11 +49,23 @@ public class EventsFragment extends Fragment{
         final ListView listView = (view.findViewById(R.id.listView));
         listView.setAdapter(adapter);
         listView.setClickable(true);
+        fragmentManager = this.getActivity().getSupportFragmentManager();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity().getBaseContext(), "TOU AQUI no eventooo", Toast.LENGTH_SHORT).show();
-                Log.d("WORKED","eventooooo");
+
+                FeedAboutFragment new_frag = new FeedAboutFragment();
+                new_frag.addTitle(listOfCards.get(position).getName());
+                new_frag.addCategory(listOfCards.get(position).getCategory());
+                new_frag.addDate(listOfCards.get(position).getDate());
+                // ETC ETC ETC ETC ETC
+
+
+
+
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.screen_area, new_frag);
+                fragmentTransaction.commit();
             }
         });
         return view;

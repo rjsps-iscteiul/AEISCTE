@@ -1,30 +1,18 @@
 package com.example.ruijs.aeiscte;
 
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
 
 public class FeedFragment extends Fragment{
 
@@ -32,7 +20,7 @@ public class FeedFragment extends Fragment{
     FeedAdapter adapter;
 
     ArrayList<Card> listOfCards = new ArrayList<Card>();
-
+    FragmentManager fragmentManager;
 
     @Nullable
     @Override
@@ -48,15 +36,29 @@ public class FeedFragment extends Fragment{
         final ListView listView = (view.findViewById(R.id.listView));
         listView.setAdapter(adapter);
         listView.setClickable(true);
+        fragmentManager = this.getActivity().getSupportFragmentManager();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity().getBaseContext(), "TOU AQUI CARALHOOOOOOOO", Toast.LENGTH_SHORT).show();
-                Log.d("WORKED","CARALHOOOOOO");
+
+                FeedAboutFragment new_frag = new FeedAboutFragment();
+                new_frag.addTitle(listOfCards.get(position).getName());
+                new_frag.addCategory(listOfCards.get(position).getCategory());
+                new_frag.addDate(listOfCards.get(position).getDate());
+                // ETC ETC ETC ETC ETC
+
+
+
+
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.screen_area, new_frag);
+                fragmentTransaction.commit();
             }
         });
         return view;
     }
+
+
     public void addCard(String name, String category, String date){
         Card newcard = new Card();
         newcard.setName(name);

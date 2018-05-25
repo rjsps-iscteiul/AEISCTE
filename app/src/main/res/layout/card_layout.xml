@@ -20,7 +20,7 @@
         android:alpha="1"
         android:background="@color/colorPrimary"
         android:contentDescription="@null"
-        android:scaleType="centerCrop" />
+        android:scaleType="center" />
 
 
     <RelativeLayout

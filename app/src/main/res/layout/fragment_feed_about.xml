@@ -26,12 +26,14 @@
 
                 <ImageView
                     android:id="@+id/feed_details_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="71dp"
+                    android:layout_height="84dp"
                     android:layout_alignBottom="@id/actual_content"
                     android:layout_alignLeft="@id/actual_content"
                     android:layout_alignRight="@id/actual_content"
                     android:layout_alignTop="@+id/actual_content"
+                    android:layout_marginBottom="151dp"
+                    android:layout_marginRight="313dp"
                     android:background="@drawable/ae_logo"
                     android:scaleType="centerCrop" />
 
@@ -43,13 +45,13 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="104dp"
                         android:layout_gravity="bottom"
                         android:background="@drawable/degrade" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="bottom"
                         android:orientation="vertical"
                         android:paddingBottom="40dp"
@@ -57,11 +59,32 @@
                         android:paddingRight="15dp"
                         android:paddingTop="120dp">
 
+                        <TextView
+                            android:id="@+id/feed_title_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Título"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/feed_category_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginTop="0dp"
+                            android:text="Categoria"
+                            android:textColor="@color/color_black"
+                            android:textSize="13sp" />
                     </LinearLayout>
 
                     <TextView
                         android:id="@+id/feed_date_post"
-                        android:layout_width="80dp"
+                        android:layout_width="96dp"
                         android:layout_height="25dp"
                         android:layout_gravity="top|end"
                         android:layout_marginRight="15dp"
@@ -110,13 +133,13 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/feed_category_title"
+                android:id="@+id/other_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Categoria"
+                android:text="Detalhe_1"
                 android:textColor="@color/color_black"
                 android:textSize="20sp" />
 
@@ -126,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:lineSpacingExtra="4dp"
-                android:text=""
+                android:text="valor_detalhe_1"
                 android:textColor="@color/color_black"
                 android:textSize="15sp" />
 
@@ -137,7 +160,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Local"
+                android:text="Detalhe_2"
                 android:textColor="@color/color_black"
                 android:textSize="20sp" />
 
@@ -147,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:lineSpacingExtra="4dp"
-                android:text=""
+                android:text="valor_detalhe_2"
                 android:textColor="@color/color_black"
                 android:textSize="15sp" />
 
@@ -158,7 +181,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Postado por"
+                android:text="Detalhe_3"
                 android:textColor="@color/color_black"
                 android:textSize="20sp" />
 
@@ -169,7 +192,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:lineSpacingExtra="4dp"
-                android:text=""
+                android:text="valor_detalhe_3"
                 android:textColor="@color/color_black"
                 android:textSize="15sp" />
 

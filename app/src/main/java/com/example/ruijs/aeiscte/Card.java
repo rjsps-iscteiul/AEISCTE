@@ -25,6 +25,7 @@ public class Card{
     private String category="CATEGORIA";
     private String date="DATA";
     private Image image;
+    private boolean isEvent;
 
     public String getName() {
         return name;
@@ -49,6 +50,14 @@ public class Card{
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public void setAsEvent(){
+        isEvent = true;
+    }
+
+    public boolean isEvent(){
+        return isEvent;
     }
 
     /*public Image getImage() {
