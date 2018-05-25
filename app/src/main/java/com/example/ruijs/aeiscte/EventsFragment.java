@@ -58,6 +58,7 @@ public class EventsFragment extends Fragment{
                 new_frag.addTitle(listOfCards.get(position).getName());
                 new_frag.addCategory(listOfCards.get(position).getCategory());
                 new_frag.addDate(listOfCards.get(position).getDate());
+                new_frag.isEvent(listOfCards.get(position).isEvent());
                 // ETC ETC ETC ETC ETC
 
 

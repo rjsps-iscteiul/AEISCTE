@@ -27,6 +27,8 @@ public class FeedFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         // DEVE CARREGAR OS CARDS DA BASE DE DADOS NO ON CREATE ANTES DE INICIAR O ADAPTER
+        // MERDAS PARA LER NA BASE DE DADOS ____name_categoria_data_isEvent_etc_etc_etc__________ INCLUINDO SE É OU NÃO FEED/EVENTO COM BILHETES
+
 
         for(int i = 0; i < 6; i++)
             addCard("TÍTULO_N_"+i,"CATEGORIA_N_"+i,"0"+i+"/01/01");
@@ -45,6 +47,7 @@ public class FeedFragment extends Fragment{
                 new_frag.addTitle(listOfCards.get(position).getName());
                 new_frag.addCategory(listOfCards.get(position).getCategory());
                 new_frag.addDate(listOfCards.get(position).getDate());
+                new_frag.isEvent(listOfCards.get(position).isEvent());
                 // ETC ETC ETC ETC ETC
 
 

@@ -26,16 +26,18 @@
 
                 <ImageView
                     android:id="@+id/feed_details_image"
-                    android:layout_width="71dp"
-                    android:layout_height="84dp"
+                    android:layout_width="84dp"
+                    android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/actual_content"
                     android:layout_alignLeft="@id/actual_content"
                     android:layout_alignRight="@id/actual_content"
                     android:layout_alignTop="@+id/actual_content"
                     android:layout_marginBottom="151dp"
-                    android:layout_marginRight="313dp"
+                    android:layout_marginRight="300dp"
                     android:background="@drawable/ae_logo"
                     android:scaleType="centerCrop" />
+
+
 
                 <FrameLayout
                     android:id="@+id/actual_content"
@@ -80,6 +82,7 @@
                             android:text="Categoria"
                             android:textColor="@color/color_black"
                             android:textSize="13sp" />
+
                     </LinearLayout>
 
                     <TextView
@@ -120,17 +123,6 @@
                 android:padding="15sp"
                 android:text="Inscrever"
                 android:textColor="@color/color_white" />-->
-
-            <TextView
-                android:id="@+id/feed_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|end"
-                android:clickable="true"
-                android:lineSpacingExtra="4dp"
-                android:text=""
-                android:textColor="@color/color_black"
-                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/other_1"
@@ -195,6 +187,18 @@
                 android:text="valor_detalhe_3"
                 android:textColor="@color/color_black"
                 android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="70dp" />
+
+            <ImageButton
+                android:id="@+id/btn_ticket"
+                style="@android:style/Widget.Holo.Light.ImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/ticket" />
 
         </LinearLayout>
 

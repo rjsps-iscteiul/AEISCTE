@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -18,6 +19,7 @@ public class FeedAboutFragment extends Fragment {
     private View view;
     private FeedFragment father;
     private String name,category,date;
+    private boolean isEvent = false;
 
     public FeedAboutFragment() {
         // Required empty public constructor
@@ -33,6 +35,13 @@ public class FeedAboutFragment extends Fragment {
 
         ((TextView)view.findViewById(R.id.feed_category_title)).setText(category);
         ((TextView)view.findViewById(R.id.feed_date_post)).setText(date);
+
+        if(isEvent)
+            ((ImageButton)view.findViewById(R.id.btn_ticket)).setVisibility(View.VISIBLE);
+        else
+            ((ImageButton)view.findViewById(R.id.btn_ticket)).setVisibility(View.INVISIBLE);
+
+
         return view;
     }
 
@@ -48,4 +57,7 @@ public class FeedAboutFragment extends Fragment {
         this.date = date;
     }
 
+    public void isEvent(boolean isornot) {
+        this.isEvent = isornot;
+    }
 }
