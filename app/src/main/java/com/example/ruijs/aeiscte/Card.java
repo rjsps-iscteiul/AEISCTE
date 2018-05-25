@@ -19,29 +19,12 @@ import java.util.Date;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Card extends Fragment{
+public class Card{
 
-    private String name;
-    private String category;
-    private String date;
+    private String name="TÍTULO";
+    private String category="CATEGORIA";
+    private String date="DATA";
     private Image image;
-
-    public Card() {}
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View cardView = inflater.inflate(R.layout.fragment_card, container, false);
-        if(name != null)
-            ((TextView) cardView.findViewById(R.id.news_name)).setText(name);
-        if(category != null)
-            ((TextView) cardView.findViewById(R.id.news_category)).setText(category);
-        if(date != null)
-            ((TextView) cardView.findViewById(R.id.news_date)).setText(date.toString());
-        return cardView;
-    }
 
     public String getName() {
         return name;
