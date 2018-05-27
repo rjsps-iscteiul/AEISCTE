@@ -52,6 +52,7 @@
     <string name="menu_logout">LogOut</string>
     <string name="menu_settings">Definições</string>
     <string name="menu_eventos">Eventos</string>
+    <string name="menu_tickets">Bilhetes</string>
 
     <string name="menu_facebook">Facebook</string>
     <string name="menu_instagram">Instagram</string>

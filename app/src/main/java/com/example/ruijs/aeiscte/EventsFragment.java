@@ -42,7 +42,7 @@ public class EventsFragment extends Fragment{
         // DEVE CARREGAR OS CARDS DA BASE DE DADOS NO ON CREATE ANTES DE INICIAR O ADAPTER
 
         for(int i = 0; i < 6; i++)
-            addCard("EVENT_N_"+i,"EVENT_N_"+i,"0"+i+"/01/01");
+            addCard("EVENT_N_"+i,"EVENT_N_"+i,"0"+i+"/01/01",true);
         view = inflater.inflate(R.layout.fragment_feed, container, false);
 
         adapter = new  FeedAdapter(this.getContext(),listOfCards);
@@ -71,11 +71,13 @@ public class EventsFragment extends Fragment{
         });
         return view;
     }
-    public void addCard(String name, String category, String date){
+    public void addCard(String name, String category, String date, boolean isEvent){
         Card newcard = new Card();
         newcard.setName(name);
         newcard.setCategory(category);
         newcard.setDate(date);
+        if(isEvent)
+            newcard.setAsEvent();
         listOfCards.add(newcard);
         if(adapter != null)
             adapter.notifyDataSetChanged();

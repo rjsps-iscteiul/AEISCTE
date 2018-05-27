@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity
     ContactsFragment fragContacts = new ContactsFragment();
     SocialFragment fragSocial = new SocialFragment();
     AboutFragment fragAbout = new AboutFragment();
+    TicketsFragment fragTickets = new TicketsFragment();
     SettingsFragment fragSettings = new SettingsFragment();
 
     @Override
@@ -110,6 +111,10 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.menu_perfil) {
 
             fragment = fragProfile;
+
+        } else if (id == R.id.menu_tickets) {
+
+            fragment = fragTickets;
 
         } else if (id == R.id.menu_contactos) {
 
