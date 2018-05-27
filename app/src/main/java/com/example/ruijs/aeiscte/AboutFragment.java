@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AboutFragment extends Fragment {
@@ -14,7 +16,12 @@ public class AboutFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_about, null);
+        View view = inflater.inflate(R.layout.fragment_about, null);
+
+        TextView textview= (TextView) view.findViewById(R.id.about_text);
+        textview.setMovementMethod(new ScrollingMovementMethod());
+
+        return view;
     }
 
     @Override
@@ -22,15 +29,5 @@ public class AboutFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
     }
-
-
-    /*
-
-        **********************************
-        CODE WILL BE HERE AND ON THE ONCREATED METHODS IF NECESSARY
-        **********************************
-
-     */
-
 
 }
