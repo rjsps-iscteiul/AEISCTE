@@ -17,7 +17,6 @@ import android.widget.TextView;
 public class FeedAboutFragment extends Fragment {
 
     private View view;
-    private FeedFragment father;
     private String name,category,date;
     private boolean isEvent = false;
 

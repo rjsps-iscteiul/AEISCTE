@@ -65,7 +65,7 @@ public class EventsFragment extends Fragment{
 
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.screen_area, new_frag);
+                fragmentTransaction.replace(R.id.screen_area, new_frag).addToBackStack(this.toString());
                 fragmentTransaction.commit();
             }
         });
