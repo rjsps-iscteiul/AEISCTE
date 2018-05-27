@@ -8,11 +8,20 @@
 
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="144dp"
-        android:layout_height="45dp"
+        android:id="@+id/about_text"
+        android:layout_width="match_parent"
+        android:layout_height="527dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/about_description"
+        android:textAlignment="center"
+        android:scrollbars = "vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="120dp" />
+        app:layout_constraintVertical_bias="0.191" />
+
 </android.support.constraint.ConstraintLayout>
