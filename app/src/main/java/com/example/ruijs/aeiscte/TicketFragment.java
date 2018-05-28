@@ -18,22 +18,21 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 import java.util.Random;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class Ticket extends Fragment {
+public class TicketFragment  extends Fragment {
 
     private String eventId;
     private String ticketId;
     private ImageView imageView;
+    private Card card;
 
-    public Ticket() {
+    public TicketFragment() {
         // Required empty public constructor
     }
 
     public void setEventId(String eventId){
         this.eventId = eventId;
     }
+    public void setTicketId(String ticketIf){ this.ticketId = ticketId;}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,4 +61,13 @@ public class Ticket extends Fragment {
         ticketId = String.valueOf(random.nextInt(100000));
     }
 
+    public void associateToCard(Card card){
+        this.card = card;
+        eventId = card.getId();
+    }
+
 }
+
+
+
+

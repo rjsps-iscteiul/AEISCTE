@@ -8,22 +8,19 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class FeedAboutFragment extends Fragment {
+public class FeedEventFragment extends Fragment {
 
     private View view;
     private String name,category,date, eventId;
     private boolean isEvent = false;
     private FragmentManager fragmentManager;
+    private Card card;
 
-    public FeedAboutFragment() {
+    public FeedEventFragment() {
         // Required empty public constructor
     }
 
@@ -46,7 +43,7 @@ public class FeedAboutFragment extends Fragment {
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Ticket ticket = new Ticket();
+                    TicketFragment ticket = new TicketFragment();
                     ticket.setEventId(eventId);
 
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -80,5 +77,17 @@ public class FeedAboutFragment extends Fragment {
 
     public void isEvent(boolean isornot) {
         this.isEvent = isornot;
+    }
+
+    public String getEventId(){
+        return eventId;
+    }
+
+    public void associateToCard(Card card){
+        this.card = card;
+        addTitle(this.card.getName());
+        addCategory(this.card.getCategory());
+        addDate(this.card.getDate());
+        isEvent(this.card.isEvent());
     }
 }

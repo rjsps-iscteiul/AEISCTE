@@ -1,14 +1,10 @@
 package com.example.ruijs.aeiscte;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,18 +16,17 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    FeedFragment fragFeed = new FeedFragment();
-    EventsFragment fragEvents = new EventsFragment();
+    FeedListFragment fragFeed = new FeedListFragment();
+    EventsListFragment fragEvents = new EventsListFragment();
     ProfileFragment fragProfile = new ProfileFragment();
     ContactsFragment fragContacts = new ContactsFragment();
     SocialFragment fragSocial = new SocialFragment();
     AboutFragment fragAbout = new AboutFragment();
-    TicketsFragment fragTickets = new TicketsFragment();
+    TicketsListFragment fragTickets = new TicketsListFragment();
     SettingsFragment fragSettings = new SettingsFragment();
 
     @Override
@@ -51,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         // Default Fragment
-        Fragment fragment = new FeedFragment();
+        Fragment fragment = new FeedListFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.screen_area, fragment);

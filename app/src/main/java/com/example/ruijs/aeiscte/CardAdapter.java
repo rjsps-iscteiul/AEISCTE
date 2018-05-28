@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class FeedAdapter extends BaseAdapter {
+public class CardAdapter extends BaseAdapter {
     public static ArrayList<Card> cardsList;
     private ViewHolder holder;
     private LayoutInflater mInflater;
 
-    public FeedAdapter(Context context, ArrayList<Card> cards)
+    public CardAdapter(Context context, ArrayList<Card> cards)
     {
         cardsList = cards;
         mInflater = LayoutInflater.from(context);

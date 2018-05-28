@@ -14,10 +14,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class TicketsFragment extends Fragment{
+public class TicketsListFragment extends Fragment{
 
     private View view;
-    TicketsAdapter adapter;
+    CardAdapter adapter;
 
     ArrayList<Card> listOfCards = new ArrayList<Card>();
     FragmentManager fragmentManager;
@@ -31,11 +31,11 @@ public class TicketsFragment extends Fragment{
 
 
         for(int i = 0; i < 6; i++)
-            addCard("BILHETE_N_"+i,"CATEGORIA_N_"+i,"0"+i+"/01/01");
-        view = inflater.inflate(R.layout.fragment_tickets, container, false);
+            addCard("TICKET_N_"+i,"CATEGORIA_N_"+i,"0"+i+"/01/01",false,"awdklanwdknakwd___"+i);
+        view = inflater.inflate(R.layout.fragment_feed, container, false);
 
-        adapter = new  TicketsAdapter(this.getContext(),listOfCards);
-        final ListView listView = (view.findViewById(R.id.listViewTicket));
+        adapter = new CardAdapter(this.getContext(),listOfCards);
+        final ListView listView = (view.findViewById(R.id.listView));
         listView.setAdapter(adapter);
         listView.setClickable(true);
         fragmentManager = this.getActivity().getSupportFragmentManager();
@@ -43,12 +43,8 @@ public class TicketsFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Ticket new_frag = new Ticket();
-                new_frag.setEventId("eventId"); //É PRECISO METER UM ID PARA CADA EVENTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                // ETC ETC ETC ETC ETC
-
-
-
+                TicketFragment new_frag = new TicketFragment();
+                new_frag.associateToCard(listOfCards.get(position));
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.screen_area, new_frag).addToBackStack(this.toString());
@@ -59,12 +55,8 @@ public class TicketsFragment extends Fragment{
     }
 
 
-    public void addCard(String name, String category, String date){
-        Card newcard = new Card();
-        newcard.setName(name);
-        newcard.setCategory(category);
-        newcard.setDate(date);
-
+    public void addCard(String name, String category, String date, boolean isEvent, String id){
+        Card newcard = new Card(name,category,date,null,isEvent,id);
         listOfCards.add(newcard);
         if(adapter != null)
             adapter.notifyDataSetChanged();

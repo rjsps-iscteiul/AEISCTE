@@ -14,10 +14,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class FeedFragment extends Fragment{
+public class FeedListFragment extends Fragment{
 
     private View view;
-    FeedAdapter adapter;
+    CardAdapter adapter;
 
     ArrayList<Card> listOfCards = new ArrayList<Card>();
     FragmentManager fragmentManager;
@@ -31,10 +31,10 @@ public class FeedFragment extends Fragment{
 
 
         for(int i = 0; i < 6; i++)
-            addCard("TÍTULO_N_"+i,"CATEGORIA_N_"+i,"0"+i+"/01/01",false);
+            addCard("FEED_N_"+i,"FEED_N_"+i,"0"+i+"/01/01",true,"a"+i+"aKMNNMNMNNMNdn"+i*2183+"lkqnd");
         view = inflater.inflate(R.layout.fragment_feed, container, false);
 
-        adapter = new  FeedAdapter(this.getContext(),listOfCards);
+        adapter = new CardAdapter(this.getContext(),listOfCards);
         final ListView listView = (view.findViewById(R.id.listView));
         listView.setAdapter(adapter);
         listView.setClickable(true);
@@ -43,11 +43,9 @@ public class FeedFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                FeedAboutFragment new_frag = new FeedAboutFragment();
-                new_frag.addTitle(listOfCards.get(position).getName());
-                new_frag.addCategory(listOfCards.get(position).getCategory());
-                new_frag.addDate(listOfCards.get(position).getDate());
-                new_frag.isEvent(listOfCards.get(position).isEvent());
+                FeedEventFragment new_frag = new FeedEventFragment();
+                new_frag.associateToCard(listOfCards.get(position));
+
                 // ETC ETC ETC ETC ETC
 
 
@@ -62,13 +60,8 @@ public class FeedFragment extends Fragment{
     }
 
 
-    public void addCard(String name, String category, String date, boolean isEvent){
-        Card newcard = new Card();
-        newcard.setName(name);
-        newcard.setCategory(category);
-        newcard.setDate(date);
-        if(isEvent)
-            newcard.setAsEvent();
+    public void addCard(String name, String category, String date, boolean isEvent, String id){
+        Card newcard = new Card(name,category,date,null,isEvent,id);
         listOfCards.add(newcard);
         if(adapter != null)
             adapter.notifyDataSetChanged();
