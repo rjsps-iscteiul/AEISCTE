@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_background2"
     tools:context=".TicketFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/ticket_id_name"
-        android:layout_width="358dp"
+        android:layout_width="209dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:text=" ---- Bilhete ----"
@@ -18,11 +17,11 @@
 
     <TextView
         android:id="@+id/ticket_id_description"
-        android:layout_width="wrap_content"
+        android:layout_width="327dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:text="Este bilhete deve ser mostrado à entrada do evento. A revenda do mesmo é ilegal e será punida de acordo com as leis aplicáveis."
+        android:text="Este bilhete deve ser mostrado à entrada do evento. "
         android:textAlignment="center"
         android:textSize="20dp" />
     <View
@@ -37,9 +36,9 @@
         android:layout_marginTop="155dp">
 
         <ImageView
+            android:id="@+id/event_qrcode_id"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/event_qrcode_id"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </FrameLayout>

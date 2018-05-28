@@ -8,16 +8,16 @@ public class Card{
     private String category="CATEGORIA";
     private String date="DATA";
     private int image;
-    private boolean isEvent;
+    private boolean hasTicket;
     private String id;
 
-    public Card(String name, String category, String date, int image, boolean isEvent, String id){
+    public Card(String name, String category, String date, int image, boolean hasTicket, String id){
 
         this.name = name;
         this.category = category;
         this.date = date;
         this.image = image;
-        this.isEvent = isEvent;
+        this.hasTicket = hasTicket;
         this.id = id;
     }
 
@@ -33,8 +33,8 @@ public class Card{
         return date;
     }
 
-    public boolean isEvent(){
-        return isEvent;
+    public boolean hasTicket(){
+        return hasTicket;
     }
 
     public String getId() {

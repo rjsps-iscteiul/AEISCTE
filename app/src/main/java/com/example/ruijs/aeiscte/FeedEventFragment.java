@@ -3,6 +3,7 @@ package com.example.ruijs.aeiscte;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
@@ -41,7 +42,7 @@ public class FeedEventFragment extends Fragment {
         fragmentManager = this.getActivity().getSupportFragmentManager();
 
         if(isEvent){
-            ImageButton imageButton = (ImageButton)view.findViewById(R.id.btn_ticket);
+            FloatingActionButton imageButton = (FloatingActionButton) view.findViewById(R.id.btn_ticket);
             imageButton.setVisibility(View.VISIBLE);
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -98,6 +99,6 @@ public class FeedEventFragment extends Fragment {
         addTitle(this.card.getName());
         addCategory(this.card.getCategory());
         addDate(this.card.getDate());
-        isEvent(this.card.isEvent());
+        isEvent(this.card.hasTicket());
     }
 }

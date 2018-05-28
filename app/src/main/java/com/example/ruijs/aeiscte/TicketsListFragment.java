@@ -32,7 +32,7 @@ public class TicketsListFragment extends Fragment{
 
         // ESTA FUNÇÃO É CHAMADA SEMPRE QUE ACEDEMOS À VIEW, PORTANTO CUIDADO COM ALGUMAS MERDAS
 
-        addCard("","","",false,"");
+        addCard("Festa do Caloiro","Bilhete","01/01/2001",false,"");
 
         adapter = new CardAdapter(this.getContext(),listOfCards);
         final ListView listView = (view.findViewById(R.id.listView));
