@@ -20,7 +20,8 @@
         android:alpha="1"
         android:background="@color/colorPrimary"
         android:contentDescription="@null"
-        android:scaleType="center" />
+        android:scaleType="fitXY"
+        />
 
 
     <RelativeLayout
@@ -49,27 +50,27 @@
 
             <TextView
                 android:id="@+id/news_name"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text="TÍTULO"
-                android:textColor="@color/color_white"
-                android:textSize="16sp" />
+                android:textColor="@color/color_black"
+                android:textSize="16sp"
+                />
 
             <TextView
                 android:id="@+id/news_category"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text="CATEGORIA"
-                android:textColor="@color/color_white"
-                android:textSize="14sp" />
+                android:textColor="@color/color_black"
+                android:textSize="14sp"
+                />
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/news_date"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
             android:layout_gravity="top"

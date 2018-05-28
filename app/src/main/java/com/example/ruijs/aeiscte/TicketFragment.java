@@ -32,7 +32,6 @@ public class TicketFragment  extends Fragment {
     public void setEventId(String eventId){
         this.eventId = eventId;
     }
-    public void setTicketId(String ticketIf){ this.ticketId = ticketId;}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,7 +57,7 @@ public class TicketFragment  extends Fragment {
 
     private void randomNewTicketId(){
         Random random = new Random();
-        ticketId = String.valueOf(random.nextInt(100000));
+        ticketId = String.valueOf(random.nextInt(100000)) + eventId;
     }
 
     public void associateToCard(Card card){

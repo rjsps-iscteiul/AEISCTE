@@ -28,6 +28,12 @@ public class TicketsListFragment extends Fragment{
 
         view = inflater.inflate(R.layout.fragment_feed, container, false);
 
+        listOfCards.clear();
+
+        // ESTA FUNÇÃO É CHAMADA SEMPRE QUE ACEDEMOS À VIEW, PORTANTO CUIDADO COM ALGUMAS MERDAS
+
+        addCard("","","",false,"");
+
         adapter = new CardAdapter(this.getContext(),listOfCards);
         final ListView listView = (view.findViewById(R.id.listView));
         listView.setAdapter(adapter);
@@ -45,14 +51,18 @@ public class TicketsListFragment extends Fragment{
                 fragmentTransaction.commit();
             }
         });
+
+        if(listOfCards.size() == 0)
+            view.findViewById(R.id.no_tickets_textview).setVisibility(View.VISIBLE);
+        else
+            view.findViewById(R.id.no_tickets_textview).setVisibility(View.INVISIBLE);
+
         return view;
     }
 
-    onRe
-
 
     public void addCard(String name, String category, String date, boolean isEvent, String id){
-        Card newcard = new Card(name,category,date,null,isEvent,id);
+        Card newcard = new Card(name,category,date,R.drawable.ticket,isEvent,id);
         listOfCards.add(newcard);
         if(adapter != null)
             adapter.notifyDataSetChanged();

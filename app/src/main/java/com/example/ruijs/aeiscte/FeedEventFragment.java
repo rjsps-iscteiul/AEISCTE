@@ -5,12 +5,12 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +32,7 @@ public class FeedEventFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_feed_about, container, false);
+        view = inflater.inflate(R.layout.fragment_feed_event, container, false);
         ((TextView)view.findViewById(R.id.feed_title_title)).setText(name);
 
         ((TextView)view.findViewById(R.id.feed_category_title)).setText(category);

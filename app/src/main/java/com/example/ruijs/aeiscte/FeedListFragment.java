@@ -28,10 +28,12 @@ public class FeedListFragment extends Fragment{
 
         // DEVE CARREGAR OS CARDS DA BASE DE DADOS NO ON CREATE ANTES DE INICIAR O ADAPTER
         // MERDAS PARA LER NA BASE DE DADOS ____name_categoria_data_isEvent_etc_etc_etc__________ INCLUINDO SE É OU NÃO FEED/EVENTO COM BILHETES
+        // ESTA FUNÇÃO É CHAMADA SEMPRE QUE ACEDEMOS À VIEW, PORTANTO CUIDADO COM ALGUMAS MERDAS
 
+        listOfCards.clear();
 
         for(int i = 0; i < 6; i++)
-            addCard("FEED_N_"+i,"FEED_N_"+i,"0"+i+"/01/01",true,"a"+i+"aKMNNMNMNNMNdn"+i*2183+"lkqnd");
+            addCard("FEED_N_"+i,"FEED_N_"+i,"0"+i+"/01/01",false,"a"+i+"aKMNNMNMNNMNdn"+i*2183+"lkqnd");
         view = inflater.inflate(R.layout.fragment_feed, container, false);
 
         adapter = new CardAdapter(this.getContext(),listOfCards);
@@ -56,12 +58,13 @@ public class FeedListFragment extends Fragment{
                 fragmentTransaction.commit();
             }
         });
+        view.findViewById(R.id.no_tickets_textview).setVisibility(View.INVISIBLE);
         return view;
     }
 
 
     public void addCard(String name, String category, String date, boolean isEvent, String id){
-        Card newcard = new Card(name,category,date,null,isEvent,id);
+        Card newcard = new Card(name,category,date,R.drawable.news,isEvent,id);
         listOfCards.add(newcard);
         if(adapter != null)
             adapter.notifyDataSetChanged();

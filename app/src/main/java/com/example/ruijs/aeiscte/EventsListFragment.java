@@ -27,8 +27,11 @@ public class EventsListFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        listOfCards.clear();
+
         // DEVE CARREGAR OS CARDS DA BASE DE DADOS NO ON CREATE ANTES DE INICIAR O ADAPTER
         // MERDAS PARA LER NA BASE DE DADOS ____name_categoria_data_isEvent_id_etc_etc_etc__________ INCLUINDO SE É OU NÃO FEED/EVENTO COM BILHETES
+        // ESTA FUNÇÃO É CHAMADA SEMPRE QUE ACEDEMOS À VIEW, PORTANTO CUIDADO COM ALGUMAS MERDAS
 
         for(int i = 0; i < 6; i++)
             addCard("EVENT_N_"+i,"EVENT_N_"+i,"0"+i+"/01/01",true,"a"+i+"akndklawnldn"+i*2183+"lkqnd");
@@ -44,11 +47,8 @@ public class EventsListFragment extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 FeedEventFragment new_frag = new FeedEventFragment();
-                new_frag.addTitle(listOfCards.get(position).getName());
-                new_frag.addCategory(listOfCards.get(position).getCategory());
-                new_frag.addDate(listOfCards.get(position).getDate());
-                new_frag.isEvent(listOfCards.get(position).isEvent());
-                new_frag.addId(listOfCards.get(position).getId());
+                new_frag.associateToCard(listOfCards.get(position));
+
                 // ETC ETC ETC ETC ETC
 
 
@@ -59,10 +59,13 @@ public class EventsListFragment extends Fragment{
                 fragmentTransaction.commit();
             }
         });
+
+        view.findViewById(R.id.no_tickets_textview).setVisibility(View.INVISIBLE);
+
         return view;
     }
     public void addCard(String name, String category, String date, boolean isEvent, String id){
-        Card newcard = new Card(name,category,date,null,isEvent,id);
+        Card newcard = new Card(name,category,date,R.drawable.event,isEvent,id);
         listOfCards.add(newcard);
         if(adapter != null)
             adapter.notifyDataSetChanged();

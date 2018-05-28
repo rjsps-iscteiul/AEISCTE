@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ public class CardAdapter extends BaseAdapter {
             holder.name = (TextView) convertView.findViewById(R.id.news_name);
             holder.category = (TextView) convertView.findViewById(R.id.news_category);
             holder.date = (TextView) convertView.findViewById(R.id.news_date);
+            holder.image = (ImageView) convertView.findViewById(R.id.news_image);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -52,6 +54,7 @@ public class CardAdapter extends BaseAdapter {
         holder.name.setText(cardsList.get(position).getName());
         holder.category.setText(cardsList.get(position).getCategory());
         holder.date.setText(cardsList.get(position).getDate());
+        holder.image.setImageResource(cardsList.get(position).getImage());
 
         return convertView;
     }
@@ -61,5 +64,6 @@ public class CardAdapter extends BaseAdapter {
         TextView name;
         TextView category;
         TextView date;
+        ImageView image;
     }
 }

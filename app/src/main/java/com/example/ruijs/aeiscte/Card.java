@@ -1,19 +1,17 @@
 package com.example.ruijs.aeiscte;
 
 
-import android.media.Image;
-
 
 public class Card{
 
     private String name="TÍTULO";
     private String category="CATEGORIA";
     private String date="DATA";
-    private Image image;
+    private int image;
     private boolean isEvent;
     private String id;
 
-    public Card(String name, String category, String date, Image image, boolean isEvent, String id){
+    public Card(String name, String category, String date, int image, boolean isEvent, String id){
 
         this.name = name;
         this.category = category;
@@ -39,12 +37,13 @@ public class Card{
         return isEvent;
     }
 
-    public String getId() { return id; }
+    public String getId() {
+        return id;
+    }
 
-    /*public Image getImage() {
+    public int getImage(){
         return image;
-    }                                       TEMOS QUE REVER ESTE PORQUE AS IMAGENS TEM QUE EXISTIR NOS DRAWABLES
-
-    */
+    }
 
    }
+
