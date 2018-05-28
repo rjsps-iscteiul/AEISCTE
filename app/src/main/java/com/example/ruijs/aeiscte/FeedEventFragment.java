@@ -20,7 +20,7 @@ public class FeedEventFragment extends Fragment {
 
     private View view;
     private String name,category,date, eventId;
-    private boolean isEvent = false;
+    private boolean isEvent,hasTicket;
     private FragmentManager fragmentManager;
     private Card card;
 
@@ -41,8 +41,8 @@ public class FeedEventFragment extends Fragment {
 
         fragmentManager = this.getActivity().getSupportFragmentManager();
 
-        if(isEvent){
-            FloatingActionButton imageButton = (FloatingActionButton) view.findViewById(R.id.btn_ticket);
+        if(hasTicket){
+            FloatingActionButton imageButton = view.findViewById(R.id.btn_ticket);
             imageButton.setVisibility(View.VISIBLE);
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -53,7 +53,7 @@ public class FeedEventFragment extends Fragment {
                     new AlertDialog.Builder(getContext())
                             .setTitle("Ticket Acquisition")
                             .setMessage("Do you want to buy a ticket to " + name + " ?")
-                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setIcon(android.R.drawable.ic_dialog_dialer)
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                                 public void onClick(DialogInterface dialog, int whichButton) {
@@ -64,7 +64,7 @@ public class FeedEventFragment extends Fragment {
             });
 
         }else
-            ((ImageButton)view.findViewById(R.id.btn_ticket)).setVisibility(View.INVISIBLE);
+            (view.findViewById(R.id.btn_ticket)).setVisibility(View.INVISIBLE);
 
 
         return view;
@@ -90,6 +90,8 @@ public class FeedEventFragment extends Fragment {
         this.isEvent = isornot;
     }
 
+    public void setHasTicket(boolean haveornot) { this.hasTicket = haveornot;}
+
     public String getEventId(){
         return eventId;
     }
@@ -99,6 +101,7 @@ public class FeedEventFragment extends Fragment {
         addTitle(this.card.getName());
         addCategory(this.card.getCategory());
         addDate(this.card.getDate());
-        isEvent(this.card.hasTicket());
+        isEvent(this.isEvent);
+        setHasTicket(this.card.hasTicket());
     }
 }

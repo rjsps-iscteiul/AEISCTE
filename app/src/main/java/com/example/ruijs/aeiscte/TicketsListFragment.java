@@ -32,7 +32,7 @@ public class TicketsListFragment extends Fragment{
 
         // ESTA FUNÇÃO É CHAMADA SEMPRE QUE ACEDEMOS À VIEW, PORTANTO CUIDADO COM ALGUMAS MERDAS
 
-        addCard("Festa do Caloiro","Bilhete","01/01/2001",false,"");
+        addCard("Festa do Caloiro","Ticket","01/01/2001",false,false,"");
 
         adapter = new CardAdapter(this.getContext(),listOfCards);
         final ListView listView = (view.findViewById(R.id.listView));
@@ -61,8 +61,8 @@ public class TicketsListFragment extends Fragment{
     }
 
 
-    public void addCard(String name, String category, String date, boolean isEvent, String id){
-        Card newcard = new Card(name,category,date,R.drawable.ticket,isEvent,id);
+    public void addCard(String name, String category, String date, boolean isEvent, boolean hasTicket, String id){
+        Card newcard = new Card(name,category,date,R.drawable.ticket,isEvent,hasTicket,id);
         listOfCards.add(newcard);
         if(adapter != null)
             adapter.notifyDataSetChanged();

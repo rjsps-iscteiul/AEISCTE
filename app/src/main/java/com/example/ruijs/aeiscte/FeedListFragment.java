@@ -33,7 +33,7 @@ public class FeedListFragment extends Fragment{
         listOfCards.clear();
 
         for(int i = 0; i < 6; i++)
-            addCard("FEED_N_"+i,"FEED_N_"+i,"0"+i+"/01/01",false,"a"+i+"aKMNNMNMNNMNdn"+i*2183+"lkqnd");
+            addCard("FEED_N_"+i,"FEED_N_"+i,"0"+i+"/01/01",false,false,"a"+i+"aKMNNMNMNNMNdn"+i*2183+"lkqnd");
         view = inflater.inflate(R.layout.fragment_feed, container, false);
 
         adapter = new CardAdapter(this.getContext(),listOfCards);
@@ -63,8 +63,13 @@ public class FeedListFragment extends Fragment{
     }
 
 
-    public void addCard(String name, String category, String date, boolean isEvent, String id){
-        Card newcard = new Card(name,category,date,R.drawable.news,isEvent,id);
+    public void addCard(String name, String category, String date, boolean isEvent, boolean hasTicket, String id){
+        Card newcard;
+        if(isEvent)
+            newcard = new Card(name,category,date,R.drawable.event,isEvent,hasTicket,id);
+        else
+            newcard = new Card(name,category,date,R.drawable.news,isEvent,hasTicket,id);
+
         listOfCards.add(newcard);
         if(adapter != null)
             adapter.notifyDataSetChanged();

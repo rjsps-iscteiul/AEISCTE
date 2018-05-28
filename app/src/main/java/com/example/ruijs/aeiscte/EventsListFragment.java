@@ -34,7 +34,7 @@ public class EventsListFragment extends Fragment{
         // ESTA FUNÇÃO É CHAMADA SEMPRE QUE ACEDEMOS À VIEW, PORTANTO CUIDADO COM ALGUMAS MERDAS
 
         for(int i = 0; i < 6; i++)
-            addCard("EVENT_N_"+i,"EVENT_N_"+i,"0"+i+"/01/01",true,"a"+i+"akndklawnldn"+i*2183+"lkqnd");
+            addCard("EVENT_N_"+i,"EVENT_N_"+i,"0"+i+"/01/01",true,true,"a"+i+"akndklawnldn"+i*2183+"lkqnd");
         view = inflater.inflate(R.layout.fragment_feed, container, false);
 
         adapter = new CardAdapter(this.getContext(),listOfCards);
@@ -64,8 +64,8 @@ public class EventsListFragment extends Fragment{
 
         return view;
     }
-    public void addCard(String name, String category, String date, boolean isEvent, String id){
-        Card newcard = new Card(name,category,date,R.drawable.event,isEvent,id);
+    public void addCard(String name, String category, String date, boolean isEvent, boolean hasTicket, String id){
+        Card newcard = new Card(name,category,date,R.drawable.event,isEvent,hasTicket,id);
         listOfCards.add(newcard);
         if(adapter != null)
             adapter.notifyDataSetChanged();
