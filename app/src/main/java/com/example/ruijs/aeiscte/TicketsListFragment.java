@@ -26,12 +26,6 @@ public class TicketsListFragment extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        // DEVE CARREGAR OS CARDS DA BASE DE DADOS NO ON CREATE ANTES DE INICIAR O ADAPTER
-        // MERDAS PARA LER NA BASE DE DADOS ____name_categoria_data_isEvent_etc_etc_etc__________ INCLUINDO SE É OU NÃO FEED/EVENTO COM BILHETES
-
-
-        for(int i = 0; i < 6; i++)
-            addCard("TICKET_N_"+i,"CATEGORIA_N_"+i,"0"+i+"/01/01",false,"awdklanwdknakwd___"+i);
         view = inflater.inflate(R.layout.fragment_feed, container, false);
 
         adapter = new CardAdapter(this.getContext(),listOfCards);
@@ -53,6 +47,8 @@ public class TicketsListFragment extends Fragment{
         });
         return view;
     }
+
+    onRe
 
 
     public void addCard(String name, String category, String date, boolean isEvent, String id){

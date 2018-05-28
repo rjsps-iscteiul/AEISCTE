@@ -1,15 +1,18 @@
 package com.example.ruijs.aeiscte;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class FeedEventFragment extends Fragment {
@@ -46,9 +49,16 @@ public class FeedEventFragment extends Fragment {
                     TicketFragment ticket = new TicketFragment();
                     ticket.setEventId(eventId);
 
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.screen_area, ticket).addToBackStack(this.toString());
-                    fragmentTransaction.commit();
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Ticket Acquisition")
+                            .setMessage("Do you want to buy a ticket to " + name + " ?")
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    Toast.makeText(getContext(), "Ticket Acquired to " + name, Toast.LENGTH_SHORT).show();
+                                }})
+                            .setNegativeButton(android.R.string.no, null).show();
                 }
             });
 
