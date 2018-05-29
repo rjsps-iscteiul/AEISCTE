@@ -27,6 +27,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.google.firebase:firebase-auth:15.0.0'
+    implementation 'com.google.firebase:firebase-database:15.0.0'
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.google.firebase:firebase-database:15.0.0'
     testImplementation 'junit:junit:4.12'
@@ -37,6 +38,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:15.0.0'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     implementation 'com.github.christophesmet:android_maskable_layout:v1.2.0'
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

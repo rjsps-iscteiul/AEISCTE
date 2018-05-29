@@ -1,50 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    tools:context=".FeedListFragment"
+    >
 
-    <ScrollView
-        android:id="@+id/feed_scroll"
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:id="@+id/feed_linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/no_tickets_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_tickets_on_list"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        />
 
-            <!--<fragment
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/teste"
-                android:name="com.example.ruijs.aeiscte.Card"
-                tools:layout="@layout/fragment_card"/>
-
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/teste2"
-                android:name="com.example.ruijs.aeiscte.Card"
-                tools:layout="@layout/fragment_card"/>
-
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/teste3"
-                android:name="com.example.ruijs.aeiscte.Card"
-                tools:layout="@layout/fragment_card"/>
-
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/teste4"
-                android:name="com.example.ruijs.aeiscte.Card"
-                tools:layout="@layout/fragment_card"/>-->
-
-        </LinearLayout>
-    </ScrollView>
-
-</RelativeLayout>
+</FrameLayout>
