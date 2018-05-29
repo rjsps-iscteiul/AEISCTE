@@ -45,6 +45,12 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Create Feed
+        FeedFactory.createFeed();
+
+        //Read Database
+
+
         // Default Fragment
         Fragment fragment = new FeedListFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();

@@ -12,6 +12,10 @@ public class Card{
     private boolean hasTicket;
     private String id;
 
+    public Card(){
+
+    }
+
     public Card(String name, String category, String date, int image, boolean isEevent, boolean hasTicket, String id){
 
         this.name = name;
@@ -47,5 +51,9 @@ public class Card{
         return image;
     }
 
-   }
+    @Override
+    public String toString() {
+        return getName();
+    }
+}
 
