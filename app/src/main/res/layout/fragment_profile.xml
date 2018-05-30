@@ -46,7 +46,6 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/color_ae_logo"
-            android:editable="false"
             android:padding="12dp"
             android:shadowColor="@color/colorAccent"
             android:text="Editar Perfil"
