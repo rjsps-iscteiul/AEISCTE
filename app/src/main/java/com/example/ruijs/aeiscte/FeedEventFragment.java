@@ -15,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class FeedEventFragment extends Fragment {
 
@@ -47,8 +50,8 @@ public class FeedEventFragment extends Fragment {
             imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    TicketFragment ticket = new TicketFragment();
-                    ticket.setEventId(eventId);
+                    //TicketFragment ticket = new TicketFragment();
+                    //ticket.setEventId(eventId);
 
                     new AlertDialog.Builder(getContext())
                             .setTitle("Ticket Acquisition")
@@ -57,6 +60,13 @@ public class FeedEventFragment extends Fragment {
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                                 public void onClick(DialogInterface dialog, int whichButton) {
+
+                                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                    DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
+
+                                    Ticket ticket = new Ticket(eventId);
+                                    databaseReference.child(ticket.getTicketId()).setValue(ticket);
+
                                     Toast.makeText(getContext(), "Ticket Acquired to " + name, Toast.LENGTH_SHORT).show();
                                 }})
                             .setNegativeButton(android.R.string.no, null).show();

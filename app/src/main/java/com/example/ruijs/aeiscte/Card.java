@@ -16,7 +16,7 @@ public class Card{
 
     }
 
-    public Card(String name, String category, String date, int image, boolean isEevent, boolean hasTicket, String id){
+    public Card(String name, String category, String date, int image, boolean isEvent, boolean hasTicket, String id){
 
         this.name = name;
         this.category = category;

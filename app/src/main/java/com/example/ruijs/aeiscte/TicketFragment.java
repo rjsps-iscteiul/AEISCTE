@@ -4,11 +4,14 @@ package com.example.ruijs.aeiscte;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -18,19 +21,14 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 import java.util.Random;
 
 
-public class TicketFragment  extends Fragment {
+public class TicketFragment extends Fragment {
 
-    private String eventId;
-    private String ticketId;
+    private Ticket ticket;
     private ImageView imageView;
     private Card card;
 
     public TicketFragment() {
         // Required empty public constructor
-    }
-
-    public void setEventId(String eventId){
-        this.eventId = eventId;
     }
 
     @Override
@@ -40,11 +38,9 @@ public class TicketFragment  extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ticket, container, false);
         imageView = (ImageView) view.findViewById(R.id.event_qrcode_id);
 
-
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try{
-            randomNewTicketId();
-            BitMatrix bitMatrix = multiFormatWriter.encode(ticketId, BarcodeFormat.QR_CODE, 200, 200);
+            BitMatrix bitMatrix = multiFormatWriter.encode(ticket.getTicketId(), BarcodeFormat.QR_CODE, 200, 200);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             imageView.setImageBitmap(bitmap);
@@ -55,14 +51,17 @@ public class TicketFragment  extends Fragment {
         return view;
     }
 
-    private void randomNewTicketId(){
-        Random random = new Random();
-        ticketId = String.valueOf(random.nextInt(100000)) + eventId;
+    public Ticket getTicket() {
+        return ticket;
     }
 
     public void associateToCard(Card card){
         this.card = card;
-        eventId = card.getId();
+        String eventId = card.getId();
+        Log.d("LLL", "UEUEUE");
+        Log.d("LLL", "MUAHAHAH");
+        ticket = new Ticket(eventId);
+        Log.d("LLL", "AAAAAAAAAA");
     }
 
 }
