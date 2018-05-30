@@ -54,7 +54,6 @@ public class FeedListFragment extends Fragment{
                     //Card card = FeedFactory.newCardFromDatabase(ds);
                     listOfCards.add(card);
                 }
-                Log.d("CONA", "OLA "+adapter);
                 //adapter.notifyDataSetChanged();
 
             }
