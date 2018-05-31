@@ -11,10 +11,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.ruijs.aeiscte.fragments.AboutFragment;
+import com.example.ruijs.aeiscte.fragments.ContactsFragment;
+import com.example.ruijs.aeiscte.fragments.EventsListFragment;
+import com.example.ruijs.aeiscte.fragments.FeedListFragment;
+import com.example.ruijs.aeiscte.fragments.ProfileFragment;
+import com.example.ruijs.aeiscte.fragments.SettingsFragment;
+import com.example.ruijs.aeiscte.fragments.SocialFragment;
+import com.example.ruijs.aeiscte.fragments.TicketsListFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity
@@ -35,12 +44,14 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Log.d("CONA", "AQUI");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        Log.d("CONA", "TAAAAAA");
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);

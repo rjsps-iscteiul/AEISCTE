@@ -1,4 +1,4 @@
-package com.example.ruijs.aeiscte;
+package com.example.ruijs.aeiscte.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -6,13 +6,16 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.ruijs.aeiscte.Card;
+import com.example.ruijs.aeiscte.CardAdapter;
+import com.example.ruijs.aeiscte.R;
+import com.example.ruijs.aeiscte.objects.Feed;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,11 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-public class FeedListFragment extends Fragment{
+public class EventsListFragment extends Fragment{
 
     private View view;
     CardAdapter adapter;
@@ -32,15 +32,19 @@ public class FeedListFragment extends Fragment{
     ArrayList<Card> listOfCards = new ArrayList<Card>();
     FragmentManager fragmentManager;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        listOfCards.clear();
+
         // DEVE CARREGAR OS CARDS DA BASE DE DADOS NO ON CREATE ANTES DE INICIAR O ADAPTER
-        // MERDAS PARA LER NA BASE DE DADOS ____name_categoria_data_isEvent_etc_etc_etc__________ INCLUINDO SE É OU NÃO FEED/EVENTO COM BILHETES
+        // MERDAS PARA LER NA BASE DE DADOS ____name_categoria_data_isEvent_id_etc_etc_etc__________ INCLUINDO SE É OU NÃO FEED/EVENTO COM BILHETES
         // ESTA FUNÇÃO É CHAMADA SEMPRE QUE ACEDEMOS À VIEW, PORTANTO CUIDADO COM ALGUMAS MERDAS
 
-        //listOfCards.clear();
+        //for(int i = 0; i < 6; i++)
+          //  addCard("EVENT_N_"+i,"EVENT_N_"+i,"0"+i+"/01/01",true,true,"a"+i+"akndklawnldn"+i*2183+"lkqnd");
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Feed");
@@ -50,12 +54,13 @@ public class FeedListFragment extends Fragment{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    Card card = ds.getValue(Card.class);
-                    //Card card = FeedFactory.newCardFromDatabase(ds);
-                    listOfCards.add(card);
+                    Feed feed = ds.getValue(Feed.class);
+                    if(feed.isEvent()) {
+                        Card card = feed.getCard();
+                        listOfCards.add(card);
+                    }
                 }
-                //adapter.notifyDataSetChanged();
-
+                adapter = new CardAdapter(getContext(),listOfCards);
             }
 
             @Override
@@ -64,10 +69,6 @@ public class FeedListFragment extends Fragment{
             }
         });
 
-        Log.d("ADEUS", "TAMANHO "+listOfCards.size());
-
-        //for(int i = 0; i < 6; i++)
-        //    addCard("FEED_N_"+i,"FEED_N_"+i,"0"+i+"/01/01",false,false,"a"+i+"aKMNNMNMNNMNdn"+i*2183+"lkqnd");
         view = inflater.inflate(R.layout.fragment_feed, container, false);
 
         adapter = new CardAdapter(this.getContext(),listOfCards);
@@ -80,7 +81,7 @@ public class FeedListFragment extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 FeedEventFragment new_frag = new FeedEventFragment();
-                new_frag.associateToCard(listOfCards.get(position));
+                new_frag.associateToFeed(listOfCards.get(position).getFeed());
 
                 // ETC ETC ETC ETC ETC
 
@@ -92,20 +93,15 @@ public class FeedListFragment extends Fragment{
                 fragmentTransaction.commit();
             }
         });
+
         view.findViewById(R.id.no_tickets_textview).setVisibility(View.INVISIBLE);
 
         return view;
     }
 
 
-   /* public void addCard(String name, String category, String date, boolean isEvent, boolean hasTicket, String id){
-        final Card newcard;
-
-        if(isEvent)
-            newcard = new Card(name,category,date,R.drawable.event,isEvent,hasTicket,id);
-        else
-            newcard = new Card(name,category,date,R.drawable.news,isEvent,hasTicket,id);
-
+    /*public void addCard(String name, String category, String date, boolean isEvent, boolean hasTicket, String id){
+        Card newcard = new Card(name,category,date,R.drawable.event,isEvent,hasTicket,id);
         listOfCards.add(newcard);
         if(adapter != null)
             adapter.notifyDataSetChanged();

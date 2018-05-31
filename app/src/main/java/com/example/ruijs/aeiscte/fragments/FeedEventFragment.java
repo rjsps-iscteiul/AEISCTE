@@ -1,4 +1,4 @@
-package com.example.ruijs.aeiscte;
+package com.example.ruijs.aeiscte.fragments;
 
 
 import android.content.DialogInterface;
@@ -10,11 +10,13 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ruijs.aeiscte.Card;
+import com.example.ruijs.aeiscte.R;
+import com.example.ruijs.aeiscte.objects.Feed;
+import com.example.ruijs.aeiscte.objects.Ticket;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,7 +27,7 @@ public class FeedEventFragment extends Fragment {
     private String name,category,date, eventId;
     private boolean isEvent,hasTicket;
     private FragmentManager fragmentManager;
-    private Card card;
+    private Feed feed;
 
     public FeedEventFragment() {
         // Required empty public constructor
@@ -106,12 +108,12 @@ public class FeedEventFragment extends Fragment {
         return eventId;
     }
 
-    public void associateToCard(Card card){
-        this.card = card;
-        addTitle(this.card.getName());
-        addCategory(this.card.getCategory());
-        addDate(this.card.getDate());
-        isEvent(this.isEvent);
-        setHasTicket(this.card.hasTicket());
+    public void associateToFeed(Feed feed){
+        this.feed = feed;
+        addTitle(feed.getName());
+        addCategory(feed.getCategory());
+        addDate(feed.getDate());
+        isEvent(feed.isEvent());
+        setHasTicket(feed.hasTicket());
     }
 }

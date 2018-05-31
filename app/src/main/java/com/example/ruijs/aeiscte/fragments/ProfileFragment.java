@@ -1,4 +1,4 @@
-package com.example.ruijs.aeiscte;
+package com.example.ruijs.aeiscte.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.internal.api.FirebaseNoSignedInUserException;
+
+import com.example.ruijs.aeiscte.R;
 
 public class ProfileFragment extends Fragment {
 
