@@ -13,9 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ruijs.aeiscte.Card;
 import com.example.ruijs.aeiscte.R;
-import com.example.ruijs.aeiscte.objects.Feed;
+import com.example.ruijs.aeiscte.objects.News;
 import com.example.ruijs.aeiscte.objects.Ticket;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,7 +26,7 @@ public class FeedEventFragment extends Fragment {
     private String name,category,date, eventId;
     private boolean isEvent,hasTicket;
     private FragmentManager fragmentManager;
-    private Feed feed;
+    private News feed;
 
     public FeedEventFragment() {
         // Required empty public constructor
@@ -108,12 +107,12 @@ public class FeedEventFragment extends Fragment {
         return eventId;
     }
 
-    public void associateToFeed(Feed feed){
+    public void associateToFeed(News feed){
         this.feed = feed;
         addTitle(feed.getName());
         addCategory(feed.getCategory());
         addDate(feed.getDate());
-        isEvent(feed.isEvent());
+        isEvent(feed.getIsEvent());
         setHasTicket(feed.hasTicket());
     }
 }

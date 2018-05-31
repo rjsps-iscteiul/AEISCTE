@@ -1,7 +1,7 @@
 package com.example.ruijs.aeiscte;
 
 
-import com.example.ruijs.aeiscte.objects.Feed;
+import com.example.ruijs.aeiscte.objects.News;
 import com.example.ruijs.aeiscte.objects.Ticket;
 
 public class Card{
@@ -11,7 +11,7 @@ public class Card{
     private String date="DATA";
     private int image;
     private boolean isFeed=true;
-    private Feed feed;
+    private News feed;
     private Ticket ticket;
 
     public Card(){
@@ -26,11 +26,11 @@ public class Card{
         this.image = image;
     }
 
-    public boolean isFeed() {
+    public boolean getIsFeed() {
         return isFeed;
     }
 
-    public Feed getFeed() {
+    public News getFeed() {
         return feed;
     }
 
@@ -43,7 +43,7 @@ public class Card{
         this.ticket = ticket;
     }
 
-    public void setFeed(Feed feed) {
+    public void setFeed(News feed) {
         this.feed = feed;
     }
 
