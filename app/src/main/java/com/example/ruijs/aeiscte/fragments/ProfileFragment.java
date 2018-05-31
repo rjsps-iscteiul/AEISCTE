@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ruijs.aeiscte.CardAdapter;
+import com.example.ruijs.aeiscte.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,12 +45,42 @@ public class ProfileFragment extends Fragment {
         et_email = myView.findViewById(R.id.email_text);
         et_birth = myView.findViewById(R.id.birth_text);
         et_phone = myView.findViewById(R.id.phone_text);
+        et_email.setText(user.getEmail());
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Feed");
+
+
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    User feed = ds.getValue(User.class);
+
+                    //Card card = feed.getCard();
+                    //listOfCards.add(card);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         return myView;
 
     }
 
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+        final User utilizador = new User(et_user_name.getText().toString(), et_email.getText().toString(), et_curso.getText().toString(), et_birth.getText().toString(), Integer.parseInt(et_phone.getText().toString()));
+
         super.onViewCreated(view, savedInstanceState);
         final Button btn = (Button) (getActivity().findViewById(R.id.btn_edit_profile));
         getActivity().findViewById(R.id.btn_edit_profile).setOnClickListener(new View.OnClickListener() {
@@ -64,8 +96,7 @@ public class ProfileFragment extends Fragment {
                 //GUARDAR INFO
                 }else {
                     is_editing = false;
-                    final User utilizador = new User(et_user_name.getText().toString(), et_email.getText().toString(), et_curso.getText().toString(), et_birth.getText().toString(), Integer.parseInt(et_phone.getText().toString()));
-                    inserirUser(utilizador);
+                    editUser(utilizador);
                     //et_user_name.setEnabled(false);
                     //et_curso.enable setEnabled(false);
                     //et_email.setEnabled(false);
@@ -79,21 +110,18 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    public void inserirUser(User user1){
+    public void editUser(final User user1){
         //final User user1 = new User(et_user_name.getText().toString(), et_email.getText().toString(), et_curso.getText().toString(), et_email.getText().toString(), Integer.parseInt(et_phone.getText().toString()));
-        //databaseReference.child(user.getEmail()).addValueEventListener(new ValueEventListener() {
-            //@Override
-            //public void onDataChange(DataSnapshot dataSnapshot) {
-                //if(user.getEmail().equals(dataSnapshot.getKey())){ //CASO EXISTA ESTA CHAVE NA BASE DE DADOS
-                    databaseReference.child(createKey(user1.getEmail())).setValue(user1);
-                //}
-            //}
+        databaseReference.child(user1.getCurso()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+            }
 
-            //@Override
-            //public void onCancelled(DatabaseError databaseError) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-            //}
-        //});
+            }
+        });
     }
 
     public String createKey(String email){

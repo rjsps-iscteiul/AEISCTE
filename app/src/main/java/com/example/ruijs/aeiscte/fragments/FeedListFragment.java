@@ -44,6 +44,8 @@ public class FeedListFragment extends Fragment{
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Feed");
 
+
+
         databaseReference.addValueEventListener(new ValueEventListener() {
 
             @Override

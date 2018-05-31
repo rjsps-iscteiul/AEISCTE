@@ -15,6 +15,11 @@ public class User {
         this.phone = phone;
     }
 
+    public User(String user_name, String email){
+        this.email=email;
+        this.user_name = user_name;
+    }
+
     public String getUser_name() {
         return user_name;
     }

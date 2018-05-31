@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,6 +30,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    //GFJDF
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +80,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     private void registerUser() {
 
         String userName = editTextUserName.getText().toString().trim();
-        String email = editTextEmail.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
         // User name validations
@@ -133,9 +138,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                                 }
                             });
 
+                    User userDB = new User(userName, email);
+                    databaseReference.child(user.getUid()).setValue(userDB);
+
                     // Sign in success
                     Toast.makeText(getApplicationContext(), getString(R.string.signup_register_sucessfull), Toast.LENGTH_SHORT).show();
                     Log.d(LOG_TAG, "createUserWithEmail:success");
+
+
 
                     // Timer to wait 1 second just to the user see that registered successfully
                     Thread timer = new Thread() {

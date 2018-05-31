@@ -60,8 +60,8 @@ public class SplashScreen extends AppCompatActivity {
                         startActivity(main_activity_intent);
                         finish();
                     } else {
-                        //startActivity(log_in_intent);
-                        startActivity(main_activity_intent); // depois apagar
+                        startActivity(log_in_intent);
+                        //startActivity(main_activity_intent); // depois apagar
                         finish();
                     }
                 }
