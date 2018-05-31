@@ -1,5 +1,8 @@
 package com.example.ruijs.aeiscte;
 
+import android.util.Log;
+
+import com.example.ruijs.aeiscte.objects.Feed;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -13,16 +16,24 @@ public class FeedFactory {
         //DataBase Feed
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Feed");
+        Log.d("CONA", "11111111");
 
-        Card card1 = new Card("Festa do Caloiro", "Festas", "29/10/2017", 1, true, true, "1");
-        Card card2 = new Card("Arraial do ISCTE", "Festas", "8/6/2018", 2, true, true, "2");
-        Card card3 = new Card("Habemos NET!", "Núcleos", "24/5/2018", 3, false, false, "3");
-        Card card4 = new Card("Sèrgio é pai", "ETI", "28/5/2018", 4, false, false, "4");
+        /*Feed feed1 = new Feed("Festa do Caloiro", "Festas", "29/10/2017", 1, true, true, "1");
+        Log.d("CONA", "333333333333333");
+        Feed feed2 = new Feed("Arraial do ISCTE", "Festas", "8/6/2018", 2, true, true, "2");
+        Feed feed3 = new Feed("Habemos NET!", "Núcleos", "24/5/2018", 3, false, false, "3");
+        Feed feed4 = new Feed("Sèrgio é pai", "ETI", "28/5/2018", 4, false, false, "4");
+*/
+        Card card = new Card("a", "b", "c", 1);
 
-        databaseReference.child(card1.getId()).setValue(card1);
-        databaseReference.child(card2.getId()).setValue(card2);
-        databaseReference.child(card3.getId()).setValue(card3);
-        databaseReference.child(card4.getId()).setValue(card4);
+        //Log.d("CONA", "555555555555555555 "+feed1);
+        //databaseReference.child(card.getName()).setValue(card);
+        Log.d("CONA", "44444444444");
+        /*databaseReference.child(feed2.getId()).setValue(feed2);
+        databaseReference.child(feed3.getId()).setValue(feed3);
+        databaseReference.child(feed4.getId()).setValue(feed4);
+        */Log.d("CONA", "22222222222");
+
     }
 
     public static void newCardFromDatabase(DataSnapshot ds){

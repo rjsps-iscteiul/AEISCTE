@@ -1,4 +1,4 @@
-package com.example.ruijs.aeiscte;
+package com.example.ruijs.aeiscte.fragments;
 
 
 import android.graphics.Bitmap;
@@ -10,22 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.ruijs.aeiscte.Card;
+import com.example.ruijs.aeiscte.R;
+import com.example.ruijs.aeiscte.objects.Ticket;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-import java.util.Random;
-
 
 public class TicketFragment extends Fragment {
 
     private Ticket ticket;
     private ImageView imageView;
-    private Card card;
 
     public TicketFragment() {
         // Required empty public constructor
@@ -55,13 +53,8 @@ public class TicketFragment extends Fragment {
         return ticket;
     }
 
-    public void associateToCard(Card card){
-        this.card = card;
-        String eventId = card.getId();
-        Log.d("LLL", "UEUEUE");
-        Log.d("LLL", "MUAHAHAH");
-        ticket = new Ticket(eventId);
-        Log.d("LLL", "AAAAAAAAAA");
+    public void associateToTicket(Ticket ticket){
+        this.ticket = ticket;
     }
 
 }
