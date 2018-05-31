@@ -2,21 +2,21 @@ package com.example.ruijs.aeiscte.objects;
 
 import com.example.ruijs.aeiscte.Card;
 
-public class Feed {
+public class News {
 
-    private String name="TÍTULO";
-    private String category="CATEGORIA";
-    private String date="DATA";
+    private String name;
+    private String category;
+    private String date;
     private int image;
     private boolean isEvent;
     private boolean hasTicket;
     private String id;
 
-    public Feed(){
+    public News(){
 
     }
 
-    public Feed(String name, String category, String date, int image, boolean isEvent, boolean hasTicket, String id){
+    public News(String name, String category, String date, int image, boolean isEvent, boolean hasTicket, String id){
 
         this.name = name;
         this.category = category;
@@ -27,11 +27,7 @@ public class Feed {
         this.id = id;
     }
 
-    public boolean isHasTicket() {
-        return hasTicket;
-    }
-
-    public boolean isEvent() {
+    public boolean getIsEvent() {
         return isEvent;
     }
 
@@ -65,4 +61,8 @@ public class Feed {
         return card;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

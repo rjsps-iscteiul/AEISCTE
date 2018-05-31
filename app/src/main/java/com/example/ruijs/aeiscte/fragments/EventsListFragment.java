@@ -15,7 +15,7 @@ import android.widget.ListView;
 import com.example.ruijs.aeiscte.Card;
 import com.example.ruijs.aeiscte.CardAdapter;
 import com.example.ruijs.aeiscte.R;
-import com.example.ruijs.aeiscte.objects.Feed;
+import com.example.ruijs.aeiscte.objects.News;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,8 +54,8 @@ public class EventsListFragment extends Fragment{
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    Feed feed = ds.getValue(Feed.class);
-                    if(feed.isEvent()) {
+                    News feed = ds.getValue(News.class);
+                    if(feed.getIsEvent()) {
                         Card card = feed.getCard();
                         listOfCards.add(card);
                     }
