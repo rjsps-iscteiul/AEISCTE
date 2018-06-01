@@ -10,6 +10,10 @@ public class Ticket{
     private String eventId;
     private String ticketId;
 
+    public Ticket(){
+
+    }
+
     public Ticket(String eventId){
         this.eventId = eventId;
         this.ticketId = randomNewTicketId(eventId);
@@ -17,7 +21,24 @@ public class Ticket{
 
     private String randomNewTicketId(String eventId){
         Random random = new Random();
-        return String.valueOf(random.nextInt(100000))+eventId;
+        int n = Integer.parseInt(eventId)+1234;
+        return String.valueOf(random.nextInt(100000)*n);
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTicketId(String ticketId) {
+        this.ticketId = ticketId;
     }
 
     public String getTicketId() {
@@ -28,9 +49,17 @@ public class Ticket{
         return eventId;
     }
 
-    public Card getCard(){
+    public String getName() {
+        return name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    /*public Card getCard(){
         Card card = new Card(name, "Tickets", date, 0);
         card.setTicket(this);
         return card;
-    }
+    }*/
 }

@@ -113,6 +113,7 @@ public class FeedEventFragment extends Fragment {
         addCategory(feed.getCategory());
         addDate(feed.getDate());
         isEvent(feed.getIsEvent());
-        setHasTicket(feed.hasTicket());
+        setHasTicket(feed.getHasTicket());
+        addId(feed.getId());
     }
 }

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 
 import com.example.ruijs.aeiscte.Card;
 import com.example.ruijs.aeiscte.CardAdapter;
+import com.example.ruijs.aeiscte.FeedFactory;
 import com.example.ruijs.aeiscte.R;
 import com.example.ruijs.aeiscte.objects.News;
 import com.google.firebase.database.DataSnapshot;
@@ -44,7 +46,14 @@ public class EventsListFragment extends Fragment{
         // ESTA FUNÇÃO É CHAMADA SEMPRE QUE ACEDEMOS À VIEW, PORTANTO CUIDADO COM ALGUMAS MERDAS
 
         //for(int i = 0; i < 6; i++)
-          //  addCard("EVENT_N_"+i,"EVENT_N_"+i,"0"+i+"/01/01",true,true,"a"+i+"akndklawnldn"+i*2183+"lkqnd");
+        //int i=0;
+            //listOfCards.add(new Card("EVENT_N_"+i,"EVENT_N_"+i,"0"+i+"/01/01",true,true,"a"+i+"akndklawnldn"+i*2183+"lkqnd"));
+
+        //int i=0;
+        //News news = new News("EVENT_N_"+i,"EVENT_N_"+i,"0"+i+"/01/01",1, true,true,"a"+i+"akndklawnldn"+i*2183+"lkqnd");
+
+        view = inflater.inflate(R.layout.fragment_feed, container, false);
+        final ListView listView = (view.findViewById(R.id.listView));
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Feed");
@@ -56,11 +65,13 @@ public class EventsListFragment extends Fragment{
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     News feed = ds.getValue(News.class);
                     if(feed.getIsEvent()) {
-                        Card card = feed.getCard();
+                        Card card = FeedFactory.feedToCard(feed);
+                        Log.d("CONA", "OI "+feed.getImage());
                         listOfCards.add(card);
                     }
                 }
                 adapter = new CardAdapter(getContext(),listOfCards);
+                listView.setAdapter(adapter);
             }
 
             @Override
@@ -69,10 +80,8 @@ public class EventsListFragment extends Fragment{
             }
         });
 
-        view = inflater.inflate(R.layout.fragment_feed, container, false);
 
         adapter = new CardAdapter(this.getContext(),listOfCards);
-        final ListView listView = (view.findViewById(R.id.listView));
         listView.setAdapter(adapter);
         listView.setClickable(true);
         fragmentManager = this.getActivity().getSupportFragmentManager();

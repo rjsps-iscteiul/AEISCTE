@@ -14,10 +14,14 @@ import android.widget.ListView;
 
 import com.example.ruijs.aeiscte.Card;
 import com.example.ruijs.aeiscte.CardAdapter;
+import com.example.ruijs.aeiscte.FeedFactory;
 import com.example.ruijs.aeiscte.R;
 import com.example.ruijs.aeiscte.objects.Ticket;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -34,6 +38,7 @@ public class TicketsListFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_feed, container, false);
+        final ListView listView = (view.findViewById(R.id.listView));
 
         listOfCards.clear();
 
@@ -41,7 +46,7 @@ public class TicketsListFragment extends Fragment{
 
         //addCard("Festa do Caloiro","Ticket","01/01/2001",false,false,"148651");
 
-        /*FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -50,10 +55,16 @@ public class TicketsListFragment extends Fragment{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Ticket ticket = ds.getValue(Ticket.class);
-                    //Card card = FeedFactory.newCardFromDatabase(ds);
-                    listOfCards.add(ticket);
+                    Card card = FeedFactory.ticketToCard(ticket);
+                    listOfCards.add(card);
                 }
-                //adapter.notifyDataSetChanged();
+                adapter = new CardAdapter(getContext(),listOfCards);
+                listView.setAdapter(adapter);
+
+                if(listOfCards.size() == 0)
+                    view.findViewById(R.id.no_tickets_textview).setVisibility(View.VISIBLE);
+                else
+                    view.findViewById(R.id.no_tickets_textview).setVisibility(View.INVISIBLE);
 
             }
 
@@ -61,10 +72,9 @@ public class TicketsListFragment extends Fragment{
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });*/
+        });
 
         adapter = new CardAdapter(this.getContext(),listOfCards);
-        final ListView listView = (view.findViewById(R.id.listView));
         listView.setAdapter(adapter);
         listView.setClickable(true);
         fragmentManager = this.getActivity().getSupportFragmentManager();
@@ -87,10 +97,7 @@ public class TicketsListFragment extends Fragment{
             }
         });
 
-        if(listOfCards.size() == 0)
-            view.findViewById(R.id.no_tickets_textview).setVisibility(View.VISIBLE);
-        else
-            view.findViewById(R.id.no_tickets_textview).setVisibility(View.INVISIBLE);
+        view.findViewById(R.id.no_tickets_textview).setVisibility(View.VISIBLE);
 
         return view;
     }

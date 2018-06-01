@@ -43,7 +43,7 @@ public class News {
         return date;
     }
 
-    public boolean hasTicket(){
+    public boolean getHasTicket(){
         return hasTicket;
     }
 
@@ -55,11 +55,11 @@ public class News {
         return image;
     }
 
-    public Card getCard(){
+    /*public Card getCard(){
         Card card = new Card(name, category, date, image);
         card.setFeed(this);
         return card;
-    }
+    }*/
 
     @Override
     public String toString() {
