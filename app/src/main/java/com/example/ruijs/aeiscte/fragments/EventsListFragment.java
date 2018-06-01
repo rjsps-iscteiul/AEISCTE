@@ -52,6 +52,7 @@ public class EventsListFragment extends Fragment{
         //int i=0;
         //News news = new News("EVENT_N_"+i,"EVENT_N_"+i,"0"+i+"/01/01",1, true,true,"a"+i+"akndklawnldn"+i*2183+"lkqnd");
 
+        listOfCards.clear();
         view = inflater.inflate(R.layout.fragment_feed, container, false);
         final ListView listView = (view.findViewById(R.id.listView));
 

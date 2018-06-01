@@ -9,6 +9,7 @@ public class Ticket{
     private String date;
     private String eventId;
     private String ticketId;
+    private String userId;
 
     public Ticket(){
 
@@ -23,6 +24,14 @@ public class Ticket{
         Random random = new Random();
         int n = Integer.parseInt(eventId)+1234;
         return String.valueOf(random.nextInt(100000)*n);
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public void setDate(String date) {

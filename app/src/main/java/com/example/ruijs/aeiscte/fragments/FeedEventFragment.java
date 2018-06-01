@@ -16,6 +16,8 @@ import android.widget.Toast;
 import com.example.ruijs.aeiscte.R;
 import com.example.ruijs.aeiscte.objects.News;
 import com.example.ruijs.aeiscte.objects.Ticket;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -66,6 +68,10 @@ public class FeedEventFragment extends Fragment {
                                     DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
 
                                     Ticket ticket = new Ticket(eventId);
+
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                    ticket.setUserId(user.getUid());
+
                                     databaseReference.child(ticket.getTicketId()).setValue(ticket);
 
                                     Toast.makeText(getContext(), "Ticket Acquired to " + name, Toast.LENGTH_SHORT).show();

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import android.widget.ListView;
 
 import com.example.ruijs.aeiscte.Card;
 import com.example.ruijs.aeiscte.CardAdapter;
+import com.example.ruijs.aeiscte.FeedFactory;
 import com.example.ruijs.aeiscte.R;
+import com.example.ruijs.aeiscte.objects.News;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,23 +42,27 @@ public class FeedListFragment extends Fragment{
         // MERDAS PARA LER NA BASE DE DADOS ____name_categoria_data_isEvent_etc_etc_etc__________ INCLUINDO SE É OU NÃO FEED/EVENTO COM BILHETES
         // ESTA FUNÇÃO É CHAMADA SEMPRE QUE ACEDEMOS À VIEW, PORTANTO CUIDADO COM ALGUMAS MERDAS
 
-        //listOfCards.clear();
+        listOfCards.clear();
+        view = inflater.inflate(R.layout.fragment_feed, container, false);
+        final ListView listView = (view.findViewById(R.id.listView));
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Feed");
-
-
 
         databaseReference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    //Feed feed = ds.getValue(Feed.class);
-                    //Card card = feed.getCard();
-                    //listOfCards.add(card);
+                    News feed = ds.getValue(News.class);
+                    if(!feed.getIsEvent()) {
+                        Card card = FeedFactory.feedToCard(feed);
+                        Log.d("CONA", "OI "+feed.getImage());
+                        listOfCards.add(card);
+                    }
                 }
                 adapter = new CardAdapter(getContext(),listOfCards);
+                listView.setAdapter(adapter);
             }
 
             @Override
@@ -66,10 +73,8 @@ public class FeedListFragment extends Fragment{
 
         //for(int i = 0; i < 6; i++)
         //    addCard("FEED_N_"+i,"FEED_N_"+i,"0"+i+"/01/01",false,false,"a"+i+"aKMNNMNMNNMNdn"+i*2183+"lkqnd");
-        view = inflater.inflate(R.layout.fragment_feed, container, false);
 
         adapter = new CardAdapter(this.getContext(),listOfCards);
-        final ListView listView = (view.findViewById(R.id.listView));
         listView.setAdapter(adapter);
         listView.setClickable(true);
         fragmentManager = this.getActivity().getSupportFragmentManager();

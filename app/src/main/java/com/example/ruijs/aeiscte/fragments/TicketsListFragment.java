@@ -1,11 +1,13 @@
 package com.example.ruijs.aeiscte.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,8 @@ import com.example.ruijs.aeiscte.CardAdapter;
 import com.example.ruijs.aeiscte.FeedFactory;
 import com.example.ruijs.aeiscte.R;
 import com.example.ruijs.aeiscte.objects.Ticket;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +32,11 @@ import java.util.ArrayList;
 public class TicketsListFragment extends Fragment{
 
     private View view;
-    CardAdapter adapter;
+    private CardAdapter adapter;
+    private Context context;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
 
     ArrayList<Card> listOfCards = new ArrayList<Card>();
     FragmentManager fragmentManager;
@@ -36,6 +44,8 @@ public class TicketsListFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        context = getContext();
 
         view = inflater.inflate(R.layout.fragment_feed, container, false);
         final ListView listView = (view.findViewById(R.id.listView));
@@ -55,10 +65,13 @@ public class TicketsListFragment extends Fragment{
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Ticket ticket = ds.getValue(Ticket.class);
-                    Card card = FeedFactory.ticketToCard(ticket);
-                    listOfCards.add(card);
+                    if(ticket.getUserId().equals(user.getUid())) {
+                        Card card = FeedFactory.ticketToCard(ticket);
+                        listOfCards.add(card);
+                    }
                 }
-                adapter = new CardAdapter(getContext(),listOfCards);
+                Log.d("CONA", "ISTO É "+getContext());
+                adapter = new CardAdapter(context,listOfCards);
                 listView.setAdapter(adapter);
 
                 if(listOfCards.size() == 0)
@@ -74,7 +87,7 @@ public class TicketsListFragment extends Fragment{
             }
         });
 
-        adapter = new CardAdapter(this.getContext(),listOfCards);
+        adapter = new CardAdapter(context,listOfCards);
         listView.setAdapter(adapter);
         listView.setClickable(true);
         fragmentManager = this.getActivity().getSupportFragmentManager();
