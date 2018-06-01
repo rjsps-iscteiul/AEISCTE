@@ -56,12 +56,12 @@ public class ProfileFragment extends Fragment {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    User feed = ds.getValue(User.class);
+                //for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    //User feed = ds.getValue(User.class);
 
                     //Card card = feed.getCard();
                     //listOfCards.add(card);
-                }
+                //}
             }
 
             @Override
@@ -88,13 +88,28 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 //EDITAR INFO
                 if(is_editing == false){
+                    //et_email.setEnabled(true);
+                    et_curso.setFocusableInTouchMode(true);
+                    et_curso.setFocusable(true);
+                    et_user_name.setFocusableInTouchMode(true);
+                    et_user_name.setFocusable(true);
+                    et_email.setFocusableInTouchMode(true);
+                    et_email.setFocusable(true);
+                    et_phone.setFocusableInTouchMode(true);
+                    et_phone.setFocusable(true);
                     is_editing = true;
-                    //et_user_name.setFocusable(true);
-                    //et_user_name.setFocusableInTouchMode(true);
                     //et_user_name.setClickable(true);
                     btn.setText("Guardar Alterações");
                 //GUARDAR INFO
                 }else {
+                    et_curso.setFocusableInTouchMode(false);
+                    et_curso.setFocusable(false);
+                    et_user_name.setFocusableInTouchMode(false);
+                    et_user_name.setFocusable(false);
+                    et_email.setFocusableInTouchMode(false);
+                    et_email.setFocusable(false);
+                    et_phone.setFocusableInTouchMode(false);
+                    et_phone.setFocusable(false);
                     is_editing = false;
                     editUser(utilizador);
                     //et_user_name.setEnabled(false);
