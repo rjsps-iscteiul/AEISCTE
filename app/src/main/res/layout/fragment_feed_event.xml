@@ -125,7 +125,7 @@
                 android:textColor="@color/color_white" />-->
 
             <TextView
-                android:id="@+id/other_1"
+                android:id="@+id/feed_text_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -136,7 +136,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/feed_category"
+                android:id="@+id/feed_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,20 @@ public class FeedEventFragment extends Fragment {
         ((TextView)view.findViewById(R.id.feed_title_title)).setText(name);
 
         ((TextView)view.findViewById(R.id.feed_category_title)).setText(category);
-        ((TextView)view.findViewById(R.id.feed_date_post)).setText(date);
+        ((TextView)view.findViewById(R.id.feed_text_title)).setText("Notícia");
+        ((TextView)view.findViewById(R.id.feed_text)).setText(feed.getText());
+        if(feed.getEventDate()!=null) {
+            ((TextView) view.findViewById(R.id.feed_date_title)).setText("Quando");
+        }else{
+            ((TextView) view.findViewById(R.id.feed_date_title)).setText("");
+        }
+        ((TextView) view.findViewById(R.id.feed_date)).setText(feed.getEventDate());
+        if(feed.getLocal()!=null) {
+            ((TextView) view.findViewById(R.id.feed_local_title)).setText("Onde");
+        }else{
+            ((TextView) view.findViewById(R.id.feed_local_title)).setText("");
+        }
+        ((TextView)view.findViewById(R.id.feed_local)).setText(feed.getLocal());
 
         fragmentManager = this.getActivity().getSupportFragmentManager();
 
@@ -116,6 +130,7 @@ public class FeedEventFragment extends Fragment {
     public void associateToFeed(News feed){
         this.feed = feed;
         addTitle(feed.getName());
+        Log.d("RABA", "OLA "+name);
         addCategory(feed.getCategory());
         addDate(feed.getDate());
         isEvent(feed.getIsEvent());

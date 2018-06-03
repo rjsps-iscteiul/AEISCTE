@@ -7,6 +7,9 @@ public class News {
     private String name;
     private String category;
     private String date;
+    private String eventDate;
+    private String text;
+    private String local;
     private int image;
     private boolean isEvent;
     private boolean hasTicket;
@@ -25,6 +28,38 @@ public class News {
         this.isEvent = isEvent;
         this.hasTicket = hasTicket;
         this.id = id;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
+    }
+
+    public String getEventDate() {
+        return eventDate;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public boolean getIsEvent() {
