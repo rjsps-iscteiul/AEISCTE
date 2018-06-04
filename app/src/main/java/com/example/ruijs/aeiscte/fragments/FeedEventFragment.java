@@ -91,6 +91,8 @@ public class FeedEventFragment extends Fragment {
                                     DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
 
                                     Ticket ticket = new Ticket(eventId);
+                                    ticket.setName(name);
+                                    ticket.setDate(feed.getEventDate());
 
                                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                     ticket.setUserId(user.getUid());
