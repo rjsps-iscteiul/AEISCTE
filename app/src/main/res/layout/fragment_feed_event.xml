@@ -167,15 +167,15 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/feed_date_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Detalhe_3"
-                android:textColor="@color/color_black"
-                android:textSize="20sp" />
+            android:id="@+id/feed_date_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Detalhe_3"
+            android:textColor="@color/color_black"
+            android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/feed_date"
@@ -185,6 +185,28 @@
                 android:layout_marginBottom="10dp"
                 android:lineSpacingExtra="4dp"
                 android:text="valor_detalhe_3"
+                android:textColor="@color/color_black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/feed_price_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Detalhe_4"
+                android:textColor="@color/color_black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/feed_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:lineSpacingExtra="4dp"
+                android:text="valor_detalhe_4"
                 android:textColor="@color/color_black"
                 android:textSize="15sp" />
 

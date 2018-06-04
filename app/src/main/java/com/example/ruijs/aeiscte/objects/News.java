@@ -13,6 +13,7 @@ public class News {
     private int image;
     private boolean isEvent;
     private boolean hasTicket;
+    private double price;
     private String id;
 
     public News(){
@@ -28,6 +29,14 @@ public class News {
         this.isEvent = isEvent;
         this.hasTicket = hasTicket;
         this.id = id;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public String getLocal() {

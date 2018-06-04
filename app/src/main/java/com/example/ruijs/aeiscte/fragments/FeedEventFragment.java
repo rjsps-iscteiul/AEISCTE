@@ -48,16 +48,25 @@ public class FeedEventFragment extends Fragment {
         ((TextView)view.findViewById(R.id.feed_text)).setText(feed.getText());
         if(feed.getEventDate()!=null) {
             ((TextView) view.findViewById(R.id.feed_date_title)).setText("Quando");
+            ((TextView) view.findViewById(R.id.feed_date)).setText(feed.getEventDate());
         }else{
-            ((TextView) view.findViewById(R.id.feed_date_title)).setText("");
+            view.findViewById(R.id.feed_date_title).setVisibility(View.INVISIBLE);
+            view.findViewById(R.id.feed_date).setVisibility(View.INVISIBLE);
         }
-        ((TextView) view.findViewById(R.id.feed_date)).setText(feed.getEventDate());
         if(feed.getLocal()!=null) {
             ((TextView) view.findViewById(R.id.feed_local_title)).setText("Onde");
+            ((TextView)view.findViewById(R.id.feed_local)).setText(feed.getLocal());
         }else{
-            ((TextView) view.findViewById(R.id.feed_local_title)).setText("");
+            view.findViewById(R.id.feed_local_title).setVisibility(View.INVISIBLE);
+            view.findViewById(R.id.feed_local).setVisibility(View.INVISIBLE);
         }
-        ((TextView)view.findViewById(R.id.feed_local)).setText(feed.getLocal());
+        if(feed.getHasTicket()) {
+            ((TextView) view.findViewById(R.id.feed_price_title)).setText("Preço");
+            ((TextView)view.findViewById(R.id.feed_price)).setText(feed.getPrice()+" €");
+        }else{
+            view.findViewById(R.id.feed_price_title).setVisibility(View.INVISIBLE);
+            view.findViewById(R.id.feed_price).setVisibility(View.INVISIBLE);
+        }
 
         fragmentManager = this.getActivity().getSupportFragmentManager();
 

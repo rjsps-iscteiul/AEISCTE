@@ -17,6 +17,8 @@ public class FeedFactory {
 
         News feed1 = new News("Festa do Caloiro", "Festas", "03/10/2017", R.drawable.event, true, true, "1");
         feed1.setEventDate("29/10/2017");
+        feed1.setPrice(12);
+        feed1.setLocal("ISCTE-IUL");
         feed1.setText("Está oficialmente lançado o cartaz final da 21ª edição da FESTA DO CALOIRO!\n" +
                 "3 palcos, 12 artistas e 5 horas de muita música!\n" +
                 "É já dia 28 deste mês que o ISCTE vai-te dar a melhor Festa Universitária de Lisboa.\n" +
@@ -25,6 +27,7 @@ public class FeedFactory {
         News feed2 = new News("Arraial do ISCTE", "Festas", "25/5/2018", R.drawable.event, true, true, "2");
         feed2.setEventDate("8/6/2018");
         feed2.setLocal("Pátio 1");
+        feed2.setPrice(5);
         feed2.setText("A Comissão de Trabalhadores convida todos os trabalhadores do ISCTE-IUL (docentes, investigadores e técnicos) para o seu 1º Arraial a realizar no dia 8 de junho, a partir das 18h, no átrio exterior do Edifício Sedas Nunes.\n" +
                 "\n" +
                 "Juntemo-nos neste fim de tarde, acompanhados pelas sardinhas assadas, bifanas, música popular portuguesa e, claro, o obrigatório bailarico!\n" +
