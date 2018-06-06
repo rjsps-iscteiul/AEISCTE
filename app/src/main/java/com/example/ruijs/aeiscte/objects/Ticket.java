@@ -10,7 +10,7 @@ public class Ticket{
     private String eventId;
     private String ticketId;
     private String userId;
-    private boolean validated;
+    private boolean validated=false;
 
     public Ticket(){
 
@@ -31,7 +31,7 @@ public class Ticket{
         return validated;
     }
 
-    public void setValidated(boolean validated) {
+    public void setIsValidated(boolean validated) {
         this.validated = validated;
     }
 
