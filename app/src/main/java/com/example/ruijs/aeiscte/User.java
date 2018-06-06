@@ -6,6 +6,7 @@ public class User {
     private String curso;
     private String birth;
     private int phone;
+    private int adminLevel;
 
     public User(){
 
@@ -22,6 +23,14 @@ public class User {
     public User(String user_name, String email){
         this.email=email;
         this.user_name = user_name;
+    }
+
+    public int getAdminLevel() {
+        return adminLevel;
+    }
+
+    public void setAdminLevel(int adminLevel) {
+        this.adminLevel = adminLevel;
     }
 
     public String getUser_name() {
