@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.ruijs.aeiscte.CardAdapter;
+import com.example.ruijs.aeiscte.MainActivity;
 import com.example.ruijs.aeiscte.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,6 +41,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View myView = inflater.inflate(R.layout.fragment_profile, null);
+
         et_user_name = myView.findViewById(R.id.user_name);
         et_curso = myView.findViewById(R.id.curso_text);
         et_email = myView.findViewById(R.id.email_text);
@@ -53,6 +55,7 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     User userDS;
+                    TextView tv_user_name = ((MainActivity) getActivity()).findViewById(R.id.headerUserName);
                     if(ds.getValue(User.class).getEmail().equals(user.getEmail())){
                         userDS = ds.getValue(User.class);
                         et_user_name.setText(userDS.getUser_name());
@@ -62,6 +65,7 @@ public class ProfileFragment extends Fragment {
                             et_phone.setText(String.valueOf(userDS.getPhone()));
                         }
                         et_curso.setText(userDS.getCurso());
+                        tv_user_name.setText(et_user_name.getText().toString());
                     }
 
                 }
@@ -130,6 +134,8 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     User userDS;
+                    TextView tv_user_name = ((MainActivity) getActivity()).findViewById(R.id.headerUserName);
+
                     if(ds.getValue(User.class).getEmail().equals(user.getEmail())){
                         userDS = ds.getValue(User.class);
                         userDS.setUser_name(et_user_name.getText().toString());
@@ -137,6 +143,8 @@ public class ProfileFragment extends Fragment {
                         userDS.setBirth(et_birth.getText().toString());
                         userDS.setPhone(Integer.parseInt(et_phone.getText().toString()));
                         userDS.setCurso(et_curso.getText().toString());
+
+                        tv_user_name.setText(et_user_name.getText().toString());
 
                         databaseReference.child(user.getUid()).setValue(userDS);
                     }
