@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ruijs.aeiscte.fragments.AboutFragment;
@@ -26,6 +28,7 @@ import com.example.ruijs.aeiscte.fragments.SettingsFragment;
 import com.example.ruijs.aeiscte.fragments.SocialFragment;
 import com.example.ruijs.aeiscte.fragments.TicketsListFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -41,6 +44,10 @@ public class MainActivity extends AppCompatActivity
     TicketsListFragment fragTickets = new TicketsListFragment();
     SettingsFragment fragSettings = new SettingsFragment();
     ReaderFragment fragReader = new ReaderFragment();
+
+    TextView tx_user_name, tx_email;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    public String userLogged = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +81,16 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
 
         navigationView.setCheckedItem(R.id.menu_feed);
+
+        //GONÇALO FEZ MERDA
+        tx_user_name = findViewById(R.id.headerUserName);
+        tx_email = findViewById(R.id.headerUserEmail);
+
+        /*if(!user.getDisplayName().isEmpty()){
+            tx_user_name.setText(user.getDisplayName());
+        }
+        tx_email.setText(user.getEmail().toString());*/
+
     }
 
     @Override
