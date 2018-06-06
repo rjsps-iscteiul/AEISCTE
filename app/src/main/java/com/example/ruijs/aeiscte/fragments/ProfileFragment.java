@@ -47,21 +47,24 @@ public class ProfileFragment extends Fragment {
         et_phone = myView.findViewById(R.id.phone_text);
         et_email.setText(user.getEmail());
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("Feed");
-
-
-
         databaseReference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    //User feed = ds.getValue(User.class);
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    User userDS;
+                    if(ds.getValue(User.class).getEmail().equals(user.getEmail())){
+                        userDS = ds.getValue(User.class);
+                        et_user_name.setText(userDS.getUser_name());
+                        et_email.setText(userDS.getEmail());
+                        et_birth.setText(userDS.getBirth());
+                        if(userDS.getPhone()!=0) {
+                            et_phone.setText(String.valueOf(userDS.getPhone()));
+                        }
+                        et_curso.setText(userDS.getCurso());
+                    }
 
-                    //Card card = feed.getCard();
-                    //listOfCards.add(card);
-                //}
+                }
             }
 
             @Override
@@ -79,8 +82,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        final User utilizador = new User(et_user_name.getText().toString(), et_email.getText().toString(), et_curso.getText().toString(), et_birth.getText().toString(), Integer.parseInt(et_phone.getText().toString()));
-
         super.onViewCreated(view, savedInstanceState);
         final Button btn = (Button) (getActivity().findViewById(R.id.btn_edit_profile));
         getActivity().findViewById(R.id.btn_edit_profile).setOnClickListener(new View.OnClickListener() {
@@ -95,10 +96,12 @@ public class ProfileFragment extends Fragment {
                     et_user_name.setFocusable(true);
                     et_email.setFocusableInTouchMode(true);
                     et_email.setFocusable(true);
+                    et_birth.setFocusableInTouchMode(true);
+                    et_birth.setFocusable(true);
                     et_phone.setFocusableInTouchMode(true);
                     et_phone.setFocusable(true);
                     is_editing = true;
-                    //et_user_name.setClickable(true);
+
                     btn.setText("Guardar Alterações");
                 //GUARDAR INFO
                 }else {
@@ -111,12 +114,7 @@ public class ProfileFragment extends Fragment {
                     et_phone.setFocusableInTouchMode(false);
                     et_phone.setFocusable(false);
                     is_editing = false;
-                    editUser(utilizador);
-                    //et_user_name.setEnabled(false);
-                    //et_curso.enable setEnabled(false);
-                    //et_email.setEnabled(false);
-                    //et_birth.setEnabled(false);
-                    //et_phone.setEnabled(false);
+                    editUser();
 
                     btn.setText("Editar Perfil");
                 }
@@ -125,11 +123,25 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    public void editUser(final User user1){
-        //final User user1 = new User(et_user_name.getText().toString(), et_email.getText().toString(), et_curso.getText().toString(), et_email.getText().toString(), Integer.parseInt(et_phone.getText().toString()));
-        databaseReference.child(user1.getCurso()).addValueEventListener(new ValueEventListener() {
+    public void editUser(){
+        databaseReference.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    User userDS;
+                    if(ds.getValue(User.class).getEmail().equals(user.getEmail())){
+                        userDS = ds.getValue(User.class);
+                        userDS.setUser_name(et_user_name.getText().toString());
+                        userDS.setEmail(et_email.getText().toString());
+                        userDS.setBirth(et_birth.getText().toString());
+                        userDS.setPhone(Integer.parseInt(et_phone.getText().toString()));
+                        userDS.setCurso(et_curso.getText().toString());
+
+                        databaseReference.child(user.getUid()).setValue(userDS);
+                    }
+
+                }
             }
 
             @Override
@@ -139,17 +151,5 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    public String createKey(String email){
-        String [] email1 = email.split("@");
-        return email1[0];
-    }
-
-    /*
-
-        **********************************
-        CODE WILL BE HERE AND ON THE ONCREATED METHODS IF NECESSARY
-        **********************************
-
-     */
 
 }
