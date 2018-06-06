@@ -10,6 +10,7 @@ public class Ticket{
     private String eventId;
     private String ticketId;
     private String userId;
+    private boolean validated;
 
     public Ticket(){
 
@@ -24,6 +25,14 @@ public class Ticket{
         Random random = new Random();
         int n = Integer.parseInt(eventId)+1234;
         return String.valueOf(random.nextInt(100000)*n);
+    }
+
+    public boolean getIsValidated() {
+        return validated;
+    }
+
+    public void setValidated(boolean validated) {
+        this.validated = validated;
     }
 
     public String getUserId() {

@@ -61,7 +61,8 @@ public class FeedListFragment extends Fragment{
                         listOfCards.add(card);
                     }
                 }
-                adapter = new CardAdapter(getContext(),listOfCards);
+                if(adapter!=null && listOfCards!=null)
+                    adapter = new CardAdapter(getContext(),listOfCards);
                 listView.setAdapter(adapter);
             }
 

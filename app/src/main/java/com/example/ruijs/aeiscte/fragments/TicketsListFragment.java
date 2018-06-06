@@ -27,7 +27,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class TicketsListFragment extends Fragment{
 
@@ -66,8 +69,16 @@ public class TicketsListFragment extends Fragment{
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Ticket ticket = ds.getValue(Ticket.class);
                     if(ticket.getUserId().equals(user.getUid())) {
-                        Card card = FeedFactory.ticketToCard(ticket);
-                        listOfCards.add(card);
+                        try {
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                            Date strDate = sdf.parse(ticket.getDate());
+                            if (!(new Date().after(strDate))) {
+                                Card card = FeedFactory.ticketToCard(ticket);
+                                listOfCards.add(card);
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
                 Log.d("CONA", "ISTO É "+getContext());

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ruijs.aeiscte.R;
@@ -24,7 +25,9 @@ import com.google.zxing.integration.android.IntentResult;
 public class ReaderFragment extends Fragment {
 
     private Button button;
-    public static String eventId;
+    private EditText eventId;
+    public static String eventIdStrig;
+
 
     public ReaderFragment() {
         // Required empty public constructor
@@ -45,11 +48,12 @@ public class ReaderFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         button = (Button) getActivity().findViewById(R.id.button_qrcode);
+        eventId = (EditText) getActivity().findViewById(R.id.event_qrcode_id_text);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                eventIdStrig = eventId.getText().toString();
                 IntentIntegrator intentIntegrator = new IntentIntegrator(getActivity());
                 intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                 intentIntegrator.setPrompt("Scan");
@@ -57,7 +61,7 @@ public class ReaderFragment extends Fragment {
                 intentIntegrator.setBeepEnabled(false);
                 intentIntegrator.setBarcodeImageEnabled(false);
                 intentIntegrator.initiateScan();
-                Log.d("MEKIE", "NOSSA QUE É ISSO?");
+                Log.d("MEKIE", "NOSSA QUE É ISSO? "+eventIdStrig);
             }
         });
     }

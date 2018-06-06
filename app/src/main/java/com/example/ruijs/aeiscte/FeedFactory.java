@@ -30,8 +30,8 @@ public class FeedFactory {
                 "É já dia 28 deste mês que o ISCTE vai-te dar a melhor Festa Universitária de Lisboa.\n" +
                 "\n" +
                 "Prepara-te, o countdown já começou e os bilhetes estarão à venda muito em breve.");
-        News feed2 = new News("Arraial do ISCTE", "Festas", "25/5/2018", R.drawable.event, true, true, "2");
-        feed2.setEventDate("8/6/2018");
+        News feed2 = new News("Arraial do ISCTE", "Festas", "25/05/2018", R.drawable.event, true, true, "2");
+        feed2.setEventDate("08/06/2018");
         feed2.setLocal("Pátio 1");
         feed2.setPrice(5);
         feed2.setText("A Comissão de Trabalhadores convida todos os trabalhadores do ISCTE-IUL (docentes, investigadores e técnicos) para o seu 1º Arraial a realizar no dia 8 de junho, a partir das 18h, no átrio exterior do Edifício Sedas Nunes.\n" +
@@ -42,14 +42,14 @@ public class FeedFactory {
                 "Inscreve-te e entrega o valor da inscrição aos colegas Henrique Borges (SIIC), Rosário Candeias (SAS) ou Tiago Santos (GCM), até ao dia 6 de junho.\n" +
                 "\n" +
                 "Para qualquer esclarecimento, por favor contacta-nos através do e-mail ct@iscte-iul.pt");
-        News feed3 = new News("Habemos NET!", "Núcleos", "24/5/2018", R.drawable.event, false, false, "3");
+        News feed3 = new News("Habemos NET!", "Núcleos", "24/05/2018", R.drawable.event, false, false, "3");
         feed3.setLocal("Auditório B2.04");
-        feed3.setEventDate("6/8/2018");
+        feed3.setEventDate("06/08/2018");
         feed3.setText("O Núcleo de Estudantes de Tecnologia do ISCTE-IUL foi criado. A lista vencedora do primeiro mandato é a Lista C - Construimos Juntos. \n" +
         "A tomada de posse será no dia 4 de junho pelas 13h30 no auditório B2.04. \n" +
         "\n"+
         "Contamos contigo!");
-        News feed4 = new News("Sèrgio é pai", "ETI", "28/5/2018", R.drawable.event, false, false, "4");
+        News feed4 = new News("Sèrgio é pai", "ETI", "28/05/2018", R.drawable.event, false, false, "4");
         feed4.setText("O professor de Eletromagnetismo e de Propagação e Radiação de Ondas Eletromagnéticas, Sérgio Matos, foi pai de uma menina. \n" +
         "O nascimento da filha obrigou ao adiamente do teste de PROE para a semana seguinte, dia 4 de junho. \n" +
         "Desejamos as maiores felicidades.\n");
@@ -75,22 +75,34 @@ public class FeedFactory {
     }
 
     public static void confirmTicket(final String contents, final Activity activity) {
-        final String eventId = ReaderFragment.eventId;
+        final String eventId = ReaderFragment.eventIdStrig;
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
+        final DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean find=false;
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Ticket ticket = ds.getValue(Ticket.class);
                     if(ticket.getTicketId().equals(contents)){
                         if(ticket.getEventId().equals(eventId)){
-                            Toast.makeText(activity, "BILHETE VÁLIDO", Toast.LENGTH_LONG).show();
+                            if(!ticket.getIsValidated()) {
+                                Toast.makeText(activity, "BILHETE VÁLIDO!", Toast.LENGTH_LONG).show();
+                                ticket.setValidated(true);
+                                databaseReference.child(ticket.getTicketId()).child("isValidated").setValue(true);
+                                find = true;
+                                return;
+                            }else{
+                                Toast.makeText(activity, "BILHETE JÁ USADO!", Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
+                }
+                if(!find){
+                    Toast.makeText(activity, "Bilhete não encontrado.", Toast.LENGTH_LONG).show();
                 }
 
             }
