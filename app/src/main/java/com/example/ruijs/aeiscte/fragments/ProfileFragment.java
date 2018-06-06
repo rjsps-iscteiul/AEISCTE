@@ -56,6 +56,8 @@ public class ProfileFragment extends Fragment {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     User userDS;
                     TextView tv_user_name = ((MainActivity) getActivity()).findViewById(R.id.headerUserName);
+                    TextView tv_user_email = ((MainActivity) getActivity()).findViewById(R.id.headerUserEmail);
+
                     if(ds.getValue(User.class).getEmail().equals(user.getEmail())){
                         userDS = ds.getValue(User.class);
                         et_user_name.setText(userDS.getUser_name());
@@ -65,7 +67,9 @@ public class ProfileFragment extends Fragment {
                             et_phone.setText(String.valueOf(userDS.getPhone()));
                         }
                         et_curso.setText(userDS.getCurso());
+
                         tv_user_name.setText(et_user_name.getText().toString());
+                        tv_user_email.setText(et_email.getText().toString());
                     }
 
                 }
@@ -135,16 +139,21 @@ public class ProfileFragment extends Fragment {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     User userDS;
                     TextView tv_user_name = ((MainActivity) getActivity()).findViewById(R.id.headerUserName);
+                    TextView tv_user_email = ((MainActivity) getActivity()).findViewById(R.id.headerUserEmail);
 
                     if(ds.getValue(User.class).getEmail().equals(user.getEmail())){
                         userDS = ds.getValue(User.class);
                         userDS.setUser_name(et_user_name.getText().toString());
                         userDS.setEmail(et_email.getText().toString());
                         userDS.setBirth(et_birth.getText().toString());
-                        userDS.setPhone(Integer.parseInt(et_phone.getText().toString()));
+                        if(!et_phone.getText().toString().isEmpty()) {
+                            userDS.setPhone(Integer.parseInt(et_phone.getText().toString()));
+                        }
                         userDS.setCurso(et_curso.getText().toString());
 
                         tv_user_name.setText(et_user_name.getText().toString());
+                        tv_user_email.setText(et_email.getText().toString());
+
 
                         databaseReference.child(user.getUid()).setValue(userDS);
                     }
