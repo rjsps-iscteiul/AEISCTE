@@ -73,6 +73,7 @@ public class FeedFactory {
         databaseReference.child(feed2.getId()).setValue(feed2);
         databaseReference.child(feed3.getId()).setValue(feed3);
         databaseReference.child(feed4.getId()).setValue(feed4);
+        databaseReference.child(feed5.getId()).setValue(feed5);
 
     }
 
