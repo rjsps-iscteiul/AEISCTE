@@ -1,12 +1,18 @@
 package com.example.ruijs.aeiscte;
 
+import android.app.Activity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
+import com.example.ruijs.aeiscte.fragments.ReaderFragment;
 import com.example.ruijs.aeiscte.objects.News;
 import com.example.ruijs.aeiscte.objects.Ticket;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class FeedFactory {
 
@@ -66,5 +72,33 @@ public class FeedFactory {
         Card card = new Card(ticket.getName(), "Ticket", ticket.getDate(), R.drawable.ticket);
         card.setTicket(ticket);
         return card;
+    }
+
+    public static void confirmTicket(final String contents, final Activity activity) {
+        final String eventId = ReaderFragment.eventId;
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    Ticket ticket = ds.getValue(Ticket.class);
+                    if(ticket.getTicketId().equals(contents)){
+                        if(ticket.getEventId().equals(eventId)){
+                            Toast.makeText(activity, "BILHETE VÁLIDO", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

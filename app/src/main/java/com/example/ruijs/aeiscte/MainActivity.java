@@ -21,10 +21,13 @@ import com.example.ruijs.aeiscte.fragments.ContactsFragment;
 import com.example.ruijs.aeiscte.fragments.EventsListFragment;
 import com.example.ruijs.aeiscte.fragments.FeedListFragment;
 import com.example.ruijs.aeiscte.fragments.ProfileFragment;
+import com.example.ruijs.aeiscte.fragments.ReaderFragment;
 import com.example.ruijs.aeiscte.fragments.SettingsFragment;
 import com.example.ruijs.aeiscte.fragments.SocialFragment;
 import com.example.ruijs.aeiscte.fragments.TicketsListFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity
     AboutFragment fragAbout = new AboutFragment();
     TicketsListFragment fragTickets = new TicketsListFragment();
     SettingsFragment fragSettings = new SettingsFragment();
+    ReaderFragment fragReader = new ReaderFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +128,10 @@ public class MainActivity extends AppCompatActivity
 
             fragment = fragProfile;
 
+        } else if (id == R.id.menu_scanner) {
+
+            fragment = fragReader;
+
         } else if (id == R.id.menu_tickets) {
 
             fragment = fragTickets;
@@ -173,6 +181,29 @@ public class MainActivity extends AppCompatActivity
             finish();
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Log.d("MEKIE", "entreiiii ");
+
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(this, "Scan cancelado!", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                Log.d("MEKIE", "SCAN DEU "+result.getContents());
+                FeedFactory.confirmTicket(result.getContents(), this);
+            }
+        }else{
+            Log.d("MEKIE", "FOI AQUI "+result.getContents());
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 }
