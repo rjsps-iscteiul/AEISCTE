@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class FeedFactory {
 
+    private static int control=0;
 
     /**
      * Função provisória para se inserir na base de dados as notícias e eventos. O objetivo é a base de dados ser alimentada pelo site oficial
@@ -84,44 +85,50 @@ public class FeedFactory {
     }
 
     public static Card ticketToCard(Ticket ticket){
-        Card card = new Card(ticket.getName(), "Ticket", ticket.getDate(), R.drawable.ticket);
+        String valido = "Disponível";
+        if(ticket.getIsValidated())
+            valido="Usado";
+        Card card = new Card(ticket.getName(), valido, ticket.getDate(), R.drawable.ticket);
         card.setTicket(ticket);
         return card;
     }
 
     public static void confirmTicket(final String contents, final Activity activity) {
         final String eventId = ReaderFragment.eventIdStrig;
-
+        Log.d("KKK", "COISADO AQUI "+control);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         final DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
+        control=1;
 
         databaseReference.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean find=false;
+                Log.d("KKK", "CENASSS "+control);
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Ticket ticket = ds.getValue(Ticket.class);
                     if(ticket.getTicketId().equals(contents)){
                         if(ticket.getEventId().equals(eventId)){
-                            Log.d("MEKIE", "VALIDO É "+ticket.getIsValidated()+" "+ticket.getTicketId());
                             if(ticket.getIsValidated()==false) {
-                                Toast.makeText(activity, "BILHETE VÁLIDO!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(activity, "BILHETE VALIDADO! - "+contents, Toast.LENGTH_LONG).show();
                                 ticket.setIsValidated(true);
                                 databaseReference.child(ticket.getTicketId()).child("isValidated").setValue(true);
+                                control=0;
                                 find = true;
                                 return;
-                            }else{
-                                Toast.makeText(activity, "BILHETE JÁ USADO!", Toast.LENGTH_LONG).show();
+                            }else if(control==1){
+                                Log.d("KKK", "LOOOOL "+control);
+                                Toast.makeText(activity, "BILHETE JÁ USADO! - "+contents, Toast.LENGTH_LONG).show();
                                 find = true;
                             }
                         }
                     }
                 }
-                if(!find){
-                    Toast.makeText(activity, "Bilhete não encontrado.", Toast.LENGTH_LONG).show();
+                if(!find && control==1){
+                    Toast.makeText(activity, "Bilhete não encontrado! - "+contents, Toast.LENGTH_LONG).show();
                 }
-
+                control=0;
             }
 
             @Override

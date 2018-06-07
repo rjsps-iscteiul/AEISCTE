@@ -61,7 +61,6 @@ public class ReaderFragment extends Fragment {
                 intentIntegrator.setBeepEnabled(false);
                 intentIntegrator.setBarcodeImageEnabled(false);
                 intentIntegrator.initiateScan();
-                Log.d("MEKIE", "NOSSA QUE É ISSO? "+eventIdStrig);
             }
         });
     }

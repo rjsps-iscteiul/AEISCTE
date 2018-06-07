@@ -4,7 +4,11 @@ package com.example.ruijs.aeiscte;
 import com.example.ruijs.aeiscte.objects.News;
 import com.example.ruijs.aeiscte.objects.Ticket;
 
-public class Card{
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Card implements Comparable<Card>{
 
     private String name="TÍTULO";
     private String category="CATEGORIA";
@@ -61,6 +65,42 @@ public class Card{
 
     public int getImage(){
         return image;
+    }
+
+    @Override
+    public int compareTo(Card card){
+        if(isFeed){
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date date1 = sdf.parse(getDate());
+                Date date2 = sdf.parse(card.getDate());
+                if (date1.after(date2)) {
+                    return -1;
+                }else{
+                    return 1;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }else{
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date date1 = sdf.parse(ticket.getDate());
+                Date date2 = sdf.parse(card.getTicket().getDate());
+                if(ticket.getIsValidated())
+                    return 1;
+                else if(card.getTicket().getIsValidated())
+                    return -1;
+                if (date1.after(date2)) {
+                    return -1;
+                }else{
+                    return 1;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        return 0;
     }
 
     @Override
