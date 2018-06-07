@@ -4,35 +4,35 @@
     <string name="splash_screen_text" translatable="false">ISCTE - 2018 \n© All Rights Reserved</string>
 
     <!-- LogIn -->
-    <string name="login_register_text">Não tem conta? Registe-se aqui</string>
+    <string name="login_register_text">You have no account ? Register here</string>
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
     <string name="login_login_btn">Login</string>
 
-    <string name="login_email_wrong">Introduza um endereço de e-mail válido</string>
-    <string name="login_email_missing">Introduza um endereço de e-mail</string>
-    <string name="login_pass_missing">Introduza a sua password</string>
+    <string name="login_email_wrong">Text a valid email address</string>
+    <string name="login_email_missing">Text an email</string>
+    <string name="login_pass_missing">Text your password</string>
 
-    <string name="login_signin_error">Ocorreu um erro na autenticação</string>
-    <string name="login_signin_wrong_pass">Credênciais, tente novamente</string>
+    <string name="login_signin_error">There was an issue during the authentication</string>
+    <string name="login_signin_wrong_pass">Wrong credentials, please try again</string>
 
 
     <!-- SignUp -->
-    <string name="signup_name">Nome</string>
+    <string name="signup_name">Name</string>
     <string name="signup_email">Email</string>
     <string name="signup_password">Password</string>
-    <string name="signup_signup_btn">Criar Conta</string>
-    <string name="signup_login_text">Já tem conta? Faça o LogIn aqui</string>
+    <string name="signup_signup_btn">Create an account</string>
+    <string name="signup_login_text">You already have an account ? Login here</string>
 
-    <string name="signup_username_missing">Deve escolher um nome de utilizador</string>
-    <string name="signup_email_missing">Introduza o seu email</string>
-    <string name="signup_password_missing">Deve escolher uma password</string>
-    <string name="signup_email_wrong">Introduza um endereço de email válido</string>
-    <string name="signup_password_wrong">A Password deve ter no mínimo 6 digitos</string>
+    <string name="signup_username_missing">You must choose an username</string>
+    <string name="signup_email_missing">Text your email</string>
+    <string name="signup_password_missing">You must choose a password</string>
+    <string name="signup_email_wrong">Text a valid email address</string>
+    <string name="signup_password_wrong">Your password must have at least 6 digits</string>
 
-    <string name="signup_register_sucessfull">Utilizador registado com sucesso!</string>
-    <string name="signup_register_error">Ocorreu um erro no registo</string>
-    <string name="signup_register_collision">Já existe um utilizador com este email!</string>
+    <string name="signup_register_sucessfull">User has been registered with success!</string>
+    <string name="signup_register_error">There was an error during the registry</string>
+    <string name="signup_register_collision">There\'s already a user registered with this email!</string>
 
 
     <!-- Contacts -->
@@ -43,77 +43,82 @@
     <string name="contacts_university" translatable="false">ISCTE-IUL</string>
 
     <!-- About -->
-    <string name="about_description">Aplicação da Associação de Estudantes do ISCTE-IUL. \n\n É um trabalho realizado no âmbito da Unidade Curricular \n\n- DAAM - \nDesenvolvimento de Aplicações para Ambientes Móveis \n\nEsta aplicação foi totalmente construída de raíz, pelos alunos: \n\nDiogo Mendes , nº 69270 \nRui Passinhas , nº 68675\nJorge Santos , nº 69038 \nGonçalo Simões , nº 70103\n\nAs informações disponibilizadas podem não estar de acordo com a realidade pois o seu objetivo é académico e não é pretendido, para já, a distribuição da mesma para utilização geral e pública.\n\nQualquer esclarecimento adicional sobre o trabalho poderá dirigir-se a qualquer um dos alunos acima mencionados.\n\nQualquer dúvida ou esclarecimento sobre qualquer evento deve dirigir-se à sede da Associação de Estudantes ou entrar em contacto \n(contactos disponíveis através do Menu > Contactos)\n\n\n\nISCTE - 2018 \n© All Rights Reserved</string>
+    <string name="about_description">ISCTE Student Association App. \n\n This is a work made for the Curricular Unit \n\n- DAAM - \nApplications Development for Mobile Environments \n\nThis application was totally built by the following students: \n\nDiogo Mendes , nº 69270 \nRui Passinhas , nº 68675\nJorge Santos , nº 69038 \nGonçalo Simões , nº 70103\n\nThe data showned may not be real as this was made for academic purposes and we\'re not thinking in making this available for public using, at least for now.\n\nFor any additional clarifications about the work you must contact the students mentioned above.\n\nAny questions about any event you must ask to the ISCTE Student Association going to ISCTE or using the contacts available in this app. \n(Menu > Contacts)\n\n\n\nISCTE - 2018 \n© All Rights Reserved</string>
 
 
     <!-- Menu -->
-    <string name="menu_feed">Notícias</string>
-    <string name="menu_perfil">Perfil</string>
-    <string name="menu_sobre">Sobre</string>
-    <string name="menu_contactos">Contactos</string>
+    <string name="menu_feed">News</string>
+    <string name="menu_perfil">Profile</string>
+    <string name="menu_sobre">About</string>
+    <string name="menu_contactos">Contacts</string>
     <string name="menu_logout">LogOut</string>
-    <string name="menu_settings">Definições</string>
-    <string name="menu_eventos">Eventos</string>
-    <string name="menu_tickets">Meus Bilhetes</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_eventos">Events</string>
+    <string name="menu_tickets">My Tickets</string>
     <string name="menu_scanner">Scanner</string>
 
     <string name="menu_facebook">Facebook</string>
     <string name="menu_instagram">Instagram</string>
     <string name="menu_twitter">Twitter</string>
     <string name="menu_youtube">Youtube</string>
-    <string name="menu_website">Site AEISCTE</string>
+    <string name="menu_website">AEISCTE website</string>
     <string name="menu_snapchat">Snapchat</string>
 
-    <string name="sidebar_social_networks">Redes Sociais</string>
-    <string name="sidebar_third_title">Configurações</string>
+    <string name="sidebar_social_networks">Social Networks</string>
+    <string name="sidebar_third_title">Configurations</string>
 
     <string name="title_activity_main" translatable="false">AEISCTE</string>
-    <string name="navigation_drawer_open">Abrir Gaveta de Navegação</string>
-    <string name="navigation_drawer_close">Fechar Gaveta de Navegação</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
 
-    <string name="nav_header_title">Utilizador</string>
+    <string name="nav_header_title">User</string>
     <string name="nav_header_subtitle">E-mail</string>
-    <string name="nav_header_desc">Cabeçalho</string>
+    <string name="nav_header_desc">Header</string>
 
-    <string name="action_settings">Configurações</string>
+    <string name="action_settings">Configurations</string>
 
-    <string name="logout_menu_success">Sessão terminada com sucesso!</string>
-    <string name="logout_menu_no_success">Ocorreu um erro ao terminar sessão</string>
+    <string name="logout_menu_success">Session terminated with success!</string>
+    <string name="logout_menu_no_success">There was an issue while terminating session</string>
 
 
     <!-- Social Networks -->
-    <string name="follow_networks">Sigam-nos nas Redes Sociais!</string>
+    <string name="follow_networks">Follow us in the Social Networks!</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Obba!!! Página em branco!?</string>
+    <string name="hello_blank_fragment">Obba!!! Empty Page!?</string>
 
     <!-- Tickets -->
-    <string name="no_tickets_on_list">Nenhum bilhete adquirido.\nPara comprar vá ao Menu>Eventos</string>
+    <string name="no_tickets_on_list">You have no tickets acquired.\nTo buy one go to Menu>Events</string>
     <string name="reader_scan">Scan</string>
-    <string name="reader_scan_cancel">Scan cancelado!</string>
-    <string name="ticket_validated">BILHETE VÁLIDO!</string>
-    <string name="ticket_used">BILHETE JÁ USADO!</string>
-    <string name="ticket_not_found">Bilhete não encontrado!</string>
+    <string name="reader_scan_cancel">Scan canceled!</string>
+    <string name="ticket_validated">Valid Ticket!</string>
+    <string name="ticket_used">This ticket has already been used!</string>
+    <string name="ticket_not_found">Ticket not found!</string>
 
 
     <!-- FeedEvent -->
-    <string name="feedEvent_feed">Notícia</string>
-    <string name="feedEvent_when">Quando</string>
-    <string name="feedEvent_where">Onde</string>
-    <string name="feedEvent_price">Preço</string>
-    <string name="feedEvent_ticket_aq">Compra do Bilhete</string>
-    <string name="feedEvent_ticket_want">Deseja comprar um bilhete para</string>
-    <string name="feedEvent_ticket_new">Bilhete comprado com sucesso para</string>
+    <string name="feedEvent_feed">News</string>
+    <string name="feedEvent_when">When</string>
+    <string name="feedEvent_where">Where</string>
+    <string name="feedEvent_price">Price</string>
+    <string name="feedEvent_ticket_aq">Buying Ticket</string>
+    <string name="feedEvent_ticket_want">Do you wish to buy a ticket to</string>
+    <string name="feedEvent_ticket_new">Ticket acquired with success to</string>
 
     <!-- Profile -->
-    <string name="profile_save">Guardar Alterações</string>
-    <string name="profile_edit">Editar Perfil</string>
-    <string name="profile_success">Perfil guardado com sucesso</string>
+    <string name="profile_save">Save changes</string>
+    <string name="profile_edit">Edit Profile</string>
+    <string name="profile_success">Changes saved with success</string>
 
     <!-- Card -->
-    <string name="card_title">Título</string>
-    <string name="card_category">Categoria</string>
-    <string name="card_date">Data</string>
-    <string name="card_available">Disponível</string>
-    <string name="card_used">Usado</string>
+    <string name="card_title">Title</string>
+    <string name="card_category">Category</string>
+    <string name="card_date">Date</string>
+    <string name="card_available">Available</string>
+    <string name="card_used">Used</string>
+
+    <!-- Configs -->
+    <string name="config_desc">In the future, here will be the available configurations for notifications, preferences, payments and more.</string>
+
+
 </resources>
