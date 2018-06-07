@@ -67,7 +67,7 @@
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"
-                            android:text="Título"
+                            android:text="@string/card_title"
                             android:textColor="@color/color_black"
                             android:textSize="20sp" />
 
@@ -79,7 +79,7 @@
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="0dp"
                             android:textStyle="bold"
-                            android:text="Categoria"
+                            android:text="@string/card_category"
                             android:textColor="@color/color_black"
                             android:textSize="13sp" />
 
@@ -94,7 +94,7 @@
                         android:layout_marginTop="15dp"
                         android:background="@drawable/circle_background_white"
                         android:gravity="center_vertical"
-                        android:text="29/02/2018"
+                        android:text="@string/card_date"
                         android:textAlignment="center"
                         android:textColor="@color/color_black" />
                 </FrameLayout>
@@ -131,7 +131,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Detalhe_1"
+                android:text="@string/feedEvent_feed"
                 android:textColor="@color/color_black"
                 android:textSize="20sp" />
 
@@ -141,7 +141,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:lineSpacingExtra="4dp"
-                android:text="valor_detalhe_1"
                 android:textColor="@color/color_black"
                 android:textSize="15sp" />
 
@@ -152,7 +151,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Detalhe_2"
+                android:text="@string/feedEvent_where"
                 android:textColor="@color/color_black"
                 android:textSize="20sp" />
 
@@ -162,7 +161,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:lineSpacingExtra="4dp"
-                android:text="valor_detalhe_2"
                 android:textColor="@color/color_black"
                 android:textSize="15sp" />
 
@@ -173,7 +171,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:text="Detalhe_3"
+                android:text="@string/feedEvent_when"
             android:textColor="@color/color_black"
             android:textSize="20sp" />
 
@@ -184,7 +182,6 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:lineSpacingExtra="4dp"
-                android:text="valor_detalhe_3"
                 android:textColor="@color/color_black"
                 android:textSize="15sp" />
 
@@ -195,7 +192,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Detalhe_4"
+                android:text="@string/feedEvent_price"
                 android:textColor="@color/color_black"
                 android:textSize="20sp" />
 
@@ -206,7 +203,6 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:lineSpacingExtra="4dp"
-                android:text="valor_detalhe_4"
                 android:textColor="@color/color_black"
                 android:textSize="15sp" />
 

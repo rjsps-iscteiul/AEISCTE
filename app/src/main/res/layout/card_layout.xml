@@ -52,7 +52,7 @@
                 android:id="@+id/news_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TÍTULO"
+                android:text="@string/card_title"
                 android:textColor="@color/color_black"
                 android:textSize="16sp"
                 />
@@ -61,7 +61,7 @@
                 android:id="@+id/news_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CATEGORIA"
+                android:text="@string/card_category"
                 android:textColor="@color/color_black"
                 android:textSize="14sp"
                 />
@@ -78,7 +78,7 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/circle_background_white"
             android:gravity="center_vertical"
-            android:text="DATA"
+            android:text="@string/card_date"
             android:textAlignment="center"
             android:textColor="@color/color_black" />
     </RelativeLayout>

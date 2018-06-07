@@ -34,7 +34,7 @@
             android:layout_gravity="center_horizontal"
             android:focusableInTouchMode="false"
             android:focusable="false"
-            android:hint="Nome de Utilizador"
+            android:hint="Username"
             android:textColor="#fff"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -50,7 +50,7 @@
             android:backgroundTint="@color/color_ae_logo"
             android:padding="12dp"
             android:shadowColor="@color/colorAccent"
-            android:text="Editar Perfil"
+            android:text="@string/profile_edit"
             android:textColor="@color/color_white" />
     </RelativeLayout>
 
@@ -106,7 +106,7 @@
                 android:paddingLeft="20dp"
                 android:focusableInTouchMode="false"
                 android:focusable="false"
-                android:hint="Curso"
+                android:hint="Course"
                 android:textSize="16dp"
                 android:backgroundTint="@android:color/transparent"/>
         </LinearLayout>
@@ -132,6 +132,7 @@
                 android:hint="DD/MM/AAAA"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
+                android:inputType="datetime"
                 android:textSize="16dp"
                 android:backgroundTint="@android:color/transparent"/>
         </LinearLayout>
@@ -154,9 +155,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:hint="Nº Telemovel"
+                android:hint="Mobile Phone"
                 android:focusableInTouchMode="false"
                 android:focusable="false"
+                android:inputType="number"
                 android:textSize="16dp"
                 android:backgroundTint="@android:color/transparent"/>
         </LinearLayout>

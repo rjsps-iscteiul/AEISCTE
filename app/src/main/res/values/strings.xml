@@ -94,6 +94,8 @@
     <string name="ticket_validated">Valid Ticket!</string>
     <string name="ticket_used">This ticket has already been used!</string>
     <string name="ticket_not_found">Ticket not found!</string>
+    <string name="ticket_ticket">TICKET</string>
+    <string name="ticket_text">This ticket must be shown at the event entrance.</string>
 
 
     <!-- FeedEvent -->

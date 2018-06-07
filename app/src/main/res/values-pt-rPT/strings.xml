@@ -94,7 +94,8 @@
         <string name="ticket_validated">Bilhete válido!</string>
         <string name="ticket_used">Este bilhete já foi utilizado!</string>
         <string name="ticket_not_found">Bilhete não encontrado!</string>
-
+        <string name="ticket_ticket">BILHETE</string>
+        <string name="ticket_text">Este bilhete deve ser mostrado à entrada do evento.</string>
 
         <!-- FeedEvent -->
         <string name="feedEvent_feed">Notícia</string>
