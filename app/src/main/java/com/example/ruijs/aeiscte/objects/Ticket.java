@@ -1,7 +1,11 @@
 package com.example.ruijs.aeiscte.objects;
 
 import com.example.ruijs.aeiscte.Card;
+import com.example.ruijs.aeiscte.FeedFactory;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class Ticket{
@@ -75,9 +79,4 @@ public class Ticket{
         return date;
     }
 
-    /*public Card getCard(){
-        Card card = new Card(name, "Tickets", date, 0);
-        card.setTicket(this);
-        return card;
-    }*/
 }

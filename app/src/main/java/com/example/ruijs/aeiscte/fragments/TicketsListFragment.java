@@ -30,6 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 public class TicketsListFragment extends Fragment{
@@ -66,6 +67,7 @@ public class TicketsListFragment extends Fragment{
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                listOfCards.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Ticket ticket = ds.getValue(Ticket.class);
                     if(ticket.getUserId().equals(user.getUid())) {
@@ -82,6 +84,7 @@ public class TicketsListFragment extends Fragment{
                     }
                 }
                 Log.d("CONA", "ISTO É "+getContext());
+                Collections.sort(listOfCards);
                 adapter = new CardAdapter(context,listOfCards);
                 listView.setAdapter(adapter);
 

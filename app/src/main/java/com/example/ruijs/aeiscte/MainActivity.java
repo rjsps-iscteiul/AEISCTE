@@ -203,19 +203,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        Log.d("MEKIE", "entreiiii ");
-
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result != null) {
             if (result.getContents() == null) {
                 Toast.makeText(this, "Scan cancelado!", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
-                Log.d("MEKIE", "SCAN DEU "+result.getContents());
                 FeedFactory.confirmTicket(result.getContents(), this);
             }
         }else{
-            Log.d("MEKIE", "FOI AQUI "+result.getContents());
             super.onActivityResult(requestCode, resultCode, data);
         }
 

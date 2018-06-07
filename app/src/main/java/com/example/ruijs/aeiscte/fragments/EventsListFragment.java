@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class EventsListFragment extends Fragment{
 
@@ -71,6 +72,7 @@ public class EventsListFragment extends Fragment{
                         listOfCards.add(card);
                     }
                 }
+                Collections.sort(listOfCards);
                 adapter = new CardAdapter(getContext(),listOfCards);
                 listView.setAdapter(adapter);
             }

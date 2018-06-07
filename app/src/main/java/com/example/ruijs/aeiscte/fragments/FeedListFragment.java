@@ -25,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class FeedListFragment extends Fragment{
 
@@ -61,8 +63,10 @@ public class FeedListFragment extends Fragment{
                         listOfCards.add(card);
                     }
                 }
-                if(adapter!=null && listOfCards!=null)
-                    adapter = new CardAdapter(getContext(),listOfCards);
+                if(adapter!=null && listOfCards!=null) {
+                    Collections.sort(listOfCards);
+                    adapter = new CardAdapter(getContext(), listOfCards);
+                }
                 listView.setAdapter(adapter);
             }
 
