@@ -1,5 +1,6 @@
 package com.example.ruijs.aeiscte.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,9 +9,11 @@ import android.text.method.KeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ruijs.aeiscte.CardAdapter;
 import com.example.ruijs.aeiscte.MainActivity;
@@ -55,23 +58,24 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     User userDS;
-                    TextView tv_user_name = ((MainActivity) getActivity()).findViewById(R.id.headerUserName);
-                    TextView tv_user_email = ((MainActivity) getActivity()).findViewById(R.id.headerUserEmail);
+                    if(((MainActivity) getActivity()).findViewById(R.id.headerUserName) != null && ((MainActivity) getActivity()).findViewById(R.id.headerUserEmail)!=null) {
+                        TextView tv_user_name = ((MainActivity) getActivity()).findViewById(R.id.headerUserName);
+                        TextView tv_user_email = ((MainActivity) getActivity()).findViewById(R.id.headerUserEmail);
 
-                    if(ds.getValue(User.class).getEmail().equals(user.getEmail())){
-                        userDS = ds.getValue(User.class);
-                        et_user_name.setText(userDS.getUser_name());
-                        et_email.setText(userDS.getEmail());
-                        et_birth.setText(userDS.getBirth());
-                        if(userDS.getPhone()!=0) {
-                            et_phone.setText(String.valueOf(userDS.getPhone()));
+                        if (ds.getValue(User.class).getEmail().equals(user.getEmail())) {
+                            userDS = ds.getValue(User.class);
+                            et_user_name.setText(userDS.getUser_name());
+                            et_email.setText(userDS.getEmail());
+                            et_birth.setText(userDS.getBirth());
+                            if (userDS.getPhone() != 0) {
+                                et_phone.setText(String.valueOf(userDS.getPhone()));
+                            }
+                            et_curso.setText(userDS.getCurso());
+
+                            tv_user_name.setText(et_user_name.getText().toString());
+                            tv_user_email.setText(et_email.getText().toString());
                         }
-                        et_curso.setText(userDS.getCurso());
-
-                        tv_user_name.setText(et_user_name.getText().toString());
-                        tv_user_email.setText(et_email.getText().toString());
                     }
-
                 }
             }
 
@@ -121,6 +125,8 @@ public class ProfileFragment extends Fragment {
                     et_email.setFocusable(false);
                     et_phone.setFocusableInTouchMode(false);
                     et_phone.setFocusable(false);
+                    et_birth.setFocusableInTouchMode(false);
+                    et_birth.setFocusable(false);
                     is_editing = false;
                     editUser();
 
@@ -132,6 +138,11 @@ public class ProfileFragment extends Fragment {
     }
 
     public void editUser(){
+        InputMethodManager inputMethodManager =
+                (InputMethodManager) this.getActivity().getSystemService(
+                        this.getActivity().INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(
+                this.getActivity().getCurrentFocus().getWindowToken(), 0);
         databaseReference.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -156,6 +167,10 @@ public class ProfileFragment extends Fragment {
 
 
                         databaseReference.child(user.getUid()).setValue(userDS);
+
+
+                        Toast.makeText(getContext(), "Perfil editado com sucesso " , Toast.LENGTH_SHORT).show();
+
                     }
 
                 }
@@ -166,6 +181,7 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
     }
 
 
