@@ -114,7 +114,7 @@ public class ProfileFragment extends Fragment {
                     et_phone.setFocusable(true);
                     is_editing = true;
 
-                    btn.setText("Guardar Alterações");
+                    btn.setText(getString(R.string.profile_save));
                 //GUARDAR INFO
                 }else {
                     et_curso.setFocusableInTouchMode(false);
@@ -130,7 +130,7 @@ public class ProfileFragment extends Fragment {
                     is_editing = false;
                     editUser();
 
-                    btn.setText("Editar Perfil");
+                    btn.setText(getString(R.string.profile_edit));
                 }
             }
         });
@@ -169,7 +169,7 @@ public class ProfileFragment extends Fragment {
                         databaseReference.child(user.getUid()).setValue(userDS);
 
 
-                        Toast.makeText(getContext(), "Perfil editado com sucesso " , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), getString(R.string.profile_success) , Toast.LENGTH_SHORT).show();
 
                     }
 

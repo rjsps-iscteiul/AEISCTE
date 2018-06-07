@@ -69,7 +69,6 @@ public class FeedFactory {
                 "\n" +
                 "Junho é o principal mês destas festas, que se prolongam pelo verão e incluem eventos muito diversificados como espetáculos de fado, jazz e outros géneros musicais, fado nos elétricos que atravessam a cidade, festivais de cinema e teatro, provas desportivas e exposições.");
 
-        Log.d("sdadas",databaseReference.toString());
         databaseReference.child(feed1.getId()).setValue(feed1);
         databaseReference.child(feed2.getId()).setValue(feed2);
         databaseReference.child(feed3.getId()).setValue(feed3);
@@ -84,10 +83,7 @@ public class FeedFactory {
         return card;
     }
 
-    public static Card ticketToCard(Ticket ticket){
-        String valido = "Disponível";
-        if(ticket.getIsValidated())
-            valido="Usado";
+    public static Card ticketToCard(Ticket ticket, String valido){
         Card card = new Card(ticket.getName(), valido, ticket.getDate(), R.drawable.ticket);
         card.setTicket(ticket);
         return card;
@@ -95,7 +91,6 @@ public class FeedFactory {
 
     public static void confirmTicket(final String contents, final Activity activity) {
         final String eventId = ReaderFragment.eventIdStrig;
-        Log.d("KKK", "COISADO AQUI "+control);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         final DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
         control=1;
@@ -105,28 +100,26 @@ public class FeedFactory {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean find=false;
-                Log.d("KKK", "CENASSS "+control);
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     Ticket ticket = ds.getValue(Ticket.class);
                     if(ticket.getTicketId().equals(contents)){
                         if(ticket.getEventId().equals(eventId)){
                             if(ticket.getIsValidated()==false) {
-                                Toast.makeText(activity, "BILHETE VALIDADO! - "+contents, Toast.LENGTH_LONG).show();
+                                Toast.makeText(activity, activity.getString(R.string.ticket_validated)+" - "+contents, Toast.LENGTH_LONG).show();
                                 ticket.setIsValidated(true);
                                 databaseReference.child(ticket.getTicketId()).child("isValidated").setValue(true);
                                 control=0;
                                 find = true;
                                 return;
                             }else if(control==1){
-                                Log.d("KKK", "LOOOOL "+control);
-                                Toast.makeText(activity, "BILHETE JÁ USADO! - "+contents, Toast.LENGTH_LONG).show();
+                                Toast.makeText(activity, activity.getString(R.string.ticket_used)+" - "+contents, Toast.LENGTH_LONG).show();
                                 find = true;
                             }
                         }
                     }
                 }
                 if(!find && control==1){
-                    Toast.makeText(activity, "Bilhete não encontrado! - "+contents, Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity, activity.getString(R.string.ticket_not_found)+" - "+contents, Toast.LENGTH_LONG).show();
                 }
                 control=0;
             }

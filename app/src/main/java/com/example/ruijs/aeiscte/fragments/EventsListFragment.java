@@ -68,7 +68,6 @@ public class EventsListFragment extends Fragment{
                     News feed = ds.getValue(News.class);
                     if(feed.getIsEvent()) {
                         Card card = FeedFactory.feedToCard(feed);
-                        Log.d("CONA", "OI "+feed.getImage());
                         listOfCards.add(card);
                     }
                 }

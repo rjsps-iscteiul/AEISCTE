@@ -52,7 +52,7 @@ public class ContactsFragment extends Fragment implements OnMapReadyCallback {
         map = googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        googleMap.addMarker(new MarkerOptions().position(ISCTE).title("ISCTE-IUL"));
+        googleMap.addMarker(new MarkerOptions().position(ISCTE).title(this.getString(R.string.contacts_university)));
 
         CameraPosition toIscte = CameraPosition.builder().target(ISCTE).zoom(16).bearing(0).tilt(45).build();
 

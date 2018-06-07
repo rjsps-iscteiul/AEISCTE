@@ -75,7 +75,10 @@ public class TicketsListFragment extends Fragment{
                             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                             Date strDate = sdf.parse(ticket.getDate());
                             if (!(new Date().after(strDate))) {
-                                Card card = FeedFactory.ticketToCard(ticket);
+                                String valido = getString(R.string.card_available);
+                                if(ticket.getIsValidated())
+                                    valido=getString(R.string.card_used);
+                                Card card = FeedFactory.ticketToCard(ticket, valido);
                                 listOfCards.add(card);
                             }
                         } catch (ParseException e) {
@@ -83,7 +86,6 @@ public class TicketsListFragment extends Fragment{
                         }
                     }
                 }
-                Log.d("CONA", "ISTO É "+getContext());
                 Collections.sort(listOfCards);
                 adapter = new CardAdapter(context,listOfCards);
                 listView.setAdapter(adapter);

@@ -56,7 +56,7 @@ public class ReaderFragment extends Fragment {
                 eventIdStrig = eventId.getText().toString();
                 IntentIntegrator intentIntegrator = new IntentIntegrator(getActivity());
                 intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                intentIntegrator.setPrompt("Scan");
+                intentIntegrator.setPrompt(getString(R.string.reader_scan));
                 intentIntegrator.setCameraId(0);
                 intentIntegrator.setBeepEnabled(false);
                 intentIntegrator.setBarcodeImageEnabled(false);

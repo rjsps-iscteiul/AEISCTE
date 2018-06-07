@@ -44,24 +44,24 @@ public class FeedEventFragment extends Fragment {
         ((TextView)view.findViewById(R.id.feed_title_title)).setText(name);
 
         ((TextView)view.findViewById(R.id.feed_category_title)).setText(category);
-        ((TextView)view.findViewById(R.id.feed_text_title)).setText("Notícia");
+        ((TextView)view.findViewById(R.id.feed_text_title)).setText(getString(R.string.feedEvent_feed));
         ((TextView)view.findViewById(R.id.feed_text)).setText(feed.getText());
         if(feed.getEventDate()!=null) {
-            ((TextView) view.findViewById(R.id.feed_date_title)).setText("Quando");
+            ((TextView) view.findViewById(R.id.feed_date_title)).setText(getString(R.string.feedEvent_when));
             ((TextView) view.findViewById(R.id.feed_date)).setText(feed.getEventDate());
         }else{
             view.findViewById(R.id.feed_date_title).setVisibility(View.INVISIBLE);
             view.findViewById(R.id.feed_date).setVisibility(View.INVISIBLE);
         }
         if(feed.getLocal()!=null) {
-            ((TextView) view.findViewById(R.id.feed_local_title)).setText("Onde");
+            ((TextView) view.findViewById(R.id.feed_local_title)).setText(getString(R.string.feedEvent_where));
             ((TextView)view.findViewById(R.id.feed_local)).setText(feed.getLocal());
         }else{
             view.findViewById(R.id.feed_local_title).setVisibility(View.INVISIBLE);
             view.findViewById(R.id.feed_local).setVisibility(View.INVISIBLE);
         }
         if(feed.getHasTicket()) {
-            ((TextView) view.findViewById(R.id.feed_price_title)).setText("Preço");
+            ((TextView) view.findViewById(R.id.feed_price_title)).setText(getString(R.string.feedEvent_price));
             ((TextView)view.findViewById(R.id.feed_price)).setText(feed.getPrice()+" €");
         }else{
             view.findViewById(R.id.feed_price_title).setVisibility(View.INVISIBLE);
@@ -80,8 +80,8 @@ public class FeedEventFragment extends Fragment {
                     //ticket.setEventId(eventId);
 
                     new AlertDialog.Builder(getContext())
-                            .setTitle("Ticket Acquisition")
-                            .setMessage("Do you want to buy a ticket to " + name + " ?")
+                            .setTitle(getString(R.string.feedEvent_ticket_aq))
+                            .setMessage(getString(R.string.feedEvent_ticket_want) + " " + name + " ?")
                             .setIcon(android.R.drawable.ic_dialog_dialer)
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
@@ -99,7 +99,7 @@ public class FeedEventFragment extends Fragment {
 
                                     databaseReference.child(ticket.getTicketId()).setValue(ticket);
 
-                                    Toast.makeText(getContext(), "Ticket Acquired to " + name, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), getString(R.string.feedEvent_ticket_new) + " " + name, Toast.LENGTH_SHORT).show();
                                 }})
                             .setNegativeButton(android.R.string.no, null).show();
                 }
@@ -141,7 +141,6 @@ public class FeedEventFragment extends Fragment {
     public void associateToFeed(News feed){
         this.feed = feed;
         addTitle(feed.getName());
-        Log.d("RABA", "OLA "+name);
         addCategory(feed.getCategory());
         addDate(feed.getDate());
         isEvent(feed.getIsEvent());

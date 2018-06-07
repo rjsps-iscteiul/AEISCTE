@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result != null) {
             if (result.getContents() == null) {
-                Toast.makeText(this, "Scan cancelado!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.reader_scan_cancel), Toast.LENGTH_LONG).show();
             } else {
                 FeedFactory.confirmTicket(result.getContents(), this);
             }

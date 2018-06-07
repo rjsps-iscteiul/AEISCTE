@@ -133,7 +133,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Log.d(LOG_TAG, "User profile updated.");
+                                        //Log.d(LOG_TAG, "User profile updated.");
                                     }
                                 }
                             });
