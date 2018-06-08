@@ -27,8 +27,8 @@ public class Ticket{
 
     private String randomNewTicketId(String eventId){
         Random random = new Random();
-        int n = Integer.parseInt(eventId)+1234;
-        return String.valueOf(random.nextInt(100000)*n);
+        int n = Integer.parseInt(eventId)+12345;
+        return String.valueOf(random.nextInt(100000000)*n);
     }
 
     public boolean getIsValidated() {
