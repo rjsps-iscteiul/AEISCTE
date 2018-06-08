@@ -58,8 +58,12 @@ public class FeedListFragment extends Fragment{
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     News feed = ds.getValue(News.class);
                     if(!feed.getIsEvent()) {
-                        Card card = FeedFactory.feedToCard(feed);
-                        listOfCards.add(card);
+                        try {
+                            Card card = FeedFactory.feedToCard(feed);
+                            listOfCards.add(card);
+                        }catch(IllegalStateException e){
+                            e.printStackTrace();
+                        }
                     }
                 }
                 if(adapter!=null && listOfCards!=null) {

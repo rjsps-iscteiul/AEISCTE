@@ -22,6 +22,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class FeedEventFragment extends Fragment {
 
@@ -69,41 +73,54 @@ public class FeedEventFragment extends Fragment {
         }
 
         fragmentManager = this.getActivity().getSupportFragmentManager();
+        Log.d("CONA", "OMMMMM");
 
         if(hasTicket){
-            FloatingActionButton imageButton = view.findViewById(R.id.btn_ticket);
-            imageButton.setVisibility(View.VISIBLE);
-            imageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //TicketFragment ticket = new TicketFragment();
-                    //ticket.setEventId(eventId);
+            try {
+                FloatingActionButton imageButton = view.findViewById(R.id.btn_ticket);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date strDate = sdf.parse(feed.getEventDate());
+                Date today = sdf.parse(sdf.format(new Date()));
+                if (today.before(strDate) || today.equals(strDate)) {
+                    imageButton.setVisibility(View.VISIBLE);
+                    imageButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //TicketFragment ticket = new TicketFragment();
+                            //ticket.setEventId(eventId);
 
-                    new AlertDialog.Builder(getContext())
-                            .setTitle(getString(R.string.feedEvent_ticket_aq))
-                            .setMessage(getString(R.string.feedEvent_ticket_want) + " " + name + " ?")
-                            .setIcon(android.R.drawable.ic_dialog_dialer)
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            new AlertDialog.Builder(getContext())
+                                    .setTitle(getString(R.string.feedEvent_ticket_aq))
+                                    .setMessage(getString(R.string.feedEvent_ticket_want) + " " + name + " ?")
+                                    .setIcon(android.R.drawable.ic_dialog_dialer)
+                                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                                public void onClick(DialogInterface dialog, int whichButton) {
+                                        public void onClick(DialogInterface dialog, int whichButton) {
 
-                                    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                                    DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
+                                            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                            DatabaseReference databaseReference = firebaseDatabase.getReference("Tickets");
 
-                                    Ticket ticket = new Ticket(eventId);
-                                    ticket.setName(name);
-                                    ticket.setDate(feed.getEventDate());
+                                            Ticket ticket = new Ticket(eventId);
+                                            ticket.setName(name);
+                                            ticket.setDate(feed.getEventDate());
 
-                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                    ticket.setUserId(user.getUid());
+                                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                            ticket.setUserId(user.getUid());
 
-                                    databaseReference.child(ticket.getTicketId()).setValue(ticket);
+                                            databaseReference.child(ticket.getTicketId()).setValue(ticket);
 
-                                    Toast.makeText(getContext(), getString(R.string.feedEvent_ticket_new) + " " + name, Toast.LENGTH_SHORT).show();
-                                }})
-                            .setNegativeButton(android.R.string.no, null).show();
+                                            Toast.makeText(getContext(), getString(R.string.feedEvent_ticket_new) + " " + name, Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .setNegativeButton(android.R.string.no, null).show();
+                        }
+                    });
+                }else{
+                    imageButton.setVisibility(View.INVISIBLE);
                 }
-            });
+            }catch (ParseException | IllegalStateException e){
+                e.printStackTrace();
+            }
 
         }else
             (view.findViewById(R.id.btn_ticket)).setVisibility(View.INVISIBLE);

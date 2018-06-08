@@ -67,8 +67,12 @@ public class EventsListFragment extends Fragment{
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
                     News feed = ds.getValue(News.class);
                     if(feed.getIsEvent()) {
-                        Card card = FeedFactory.feedToCard(feed);
-                        listOfCards.add(card);
+                        try{
+                            Card card = FeedFactory.feedToCard(feed);
+                            listOfCards.add(card);
+                        }catch(IllegalStateException e){
+                            e.printStackTrace();
+                        }
                     }
                 }
                 Collections.sort(listOfCards);

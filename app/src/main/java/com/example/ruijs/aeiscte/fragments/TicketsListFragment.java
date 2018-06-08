@@ -74,14 +74,14 @@ public class TicketsListFragment extends Fragment{
                         try {
                             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                             Date strDate = sdf.parse(ticket.getDate());
-                            if (!(new Date().after(strDate))) {
+                            if (!(new Date().after(strDate)) || (new Date().equals(strDate))) {
                                 String valido = getString(R.string.card_available);
                                 if(ticket.getIsValidated())
                                     valido=getString(R.string.card_used);
                                 Card card = FeedFactory.ticketToCard(ticket, valido);
                                 listOfCards.add(card);
                             }
-                        } catch (ParseException e) {
+                        } catch (ParseException | IllegalStateException e) {
                             e.printStackTrace();
                         }
                     }
